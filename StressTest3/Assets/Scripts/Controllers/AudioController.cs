@@ -67,12 +67,41 @@ namespace Controllers
          public void PlayHeroMelee()
     {
       Common.PlayOneShot(Melee);
-    }  
+    }
+
+         private Coroutine _musicCoroutine;
     public void PlayMusic()
     {
       Music.Play();
-      StartCoroutine(ChangeVolumeTo(Music, 1f));
+      Music.volume = 0f;
+      
+      if(_musicCoroutine != null)
+        StopCoroutine(_musicCoroutine);
+      
+      _musicCoroutine = StartCoroutine(ChangeVolumeTo(Music, 1f, 3f));
     }
+    public void StopMusic()
+    {
+      if(_musicCoroutine != null)
+        StopCoroutine(_musicCoroutine);
+      _musicCoroutine = StartCoroutine(ChangeVolumeTo(Music, 0f));
+    }
+         private Coroutine _musicMenuCoroutine;
+     public void PlayMusicMenu()
+    {
+      MusicMenu.Play();
+      MusicMenu.volume = 0f;
+      if(_musicMenuCoroutine != null)
+        StopCoroutine(_musicMenuCoroutine);
+      _musicMenuCoroutine = StartCoroutine(ChangeVolumeTo(MusicMenu, 1f));
+    }
+    public void StopMusicMenu()
+    {
+      if(_musicMenuCoroutine != null)
+        StopCoroutine(_musicMenuCoroutine);
+      _musicMenuCoroutine = StartCoroutine(ChangeVolumeTo(MusicMenu, 0f, 0.3f));
+    }   
+    
     public void PlayFreeze()
     {
       Common.PlayOneShot(Freeze);
@@ -113,19 +142,16 @@ namespace Controllers
     }
     
 
-    public void StopMusic()
-    {
-      StartCoroutine(ChangeVolumeTo(Music, 0f));
-    }
 
-    private IEnumerator ChangeVolumeTo(AudioSource source, float to)
+
+    private IEnumerator ChangeVolumeTo(AudioSource source, float to, float duration = 1f)
     {
       var from = source.volume;
       var t = 0f;
-      while (t <= 1f)
+      while (t/duration <= 1f)
       {
         t += Time.deltaTime;
-        source.volume = Mathf.Lerp(from, to, t);
+        source.volume = Mathf.Lerp(from, to, t/duration);
         yield return null;
       }
       
