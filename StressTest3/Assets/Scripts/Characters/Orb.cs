@@ -6,7 +6,7 @@ namespace Characters
 {
   public class Orb : MonoBehaviour
   {
-    public Enemy.EnemyColorKind Kind;
+    public EnemyColorKind Kind;
 
     public GameObject Red;
     public GameObject Green;
@@ -18,7 +18,7 @@ namespace Characters
 
     private void OnEnable()
     {
-      Kind = (Enemy.EnemyColorKind)Random.Range(0, 3);
+      Kind = (EnemyColorKind)Random.Range(0, 3);
 
       Red.gameObject.SetActive(false);
       Green.gameObject.SetActive(false);
@@ -26,13 +26,13 @@ namespace Characters
 
       switch (Kind)
       {
-        case Enemy.EnemyColorKind.Red:
+        case EnemyColorKind.Red:
           Red.gameObject.SetActive(true);
           break;
-        case Enemy.EnemyColorKind.Green:
+        case EnemyColorKind.Green:
           Green.gameObject.SetActive(true);
           break;
-        case Enemy.EnemyColorKind.Blue:
+        case EnemyColorKind.Blue:
           Blue.gameObject.SetActive(true);
           break;
       }

@@ -21,11 +21,11 @@ namespace Characters
         Player.Instance.MeleeAttack();
 
       if (Input.GetKeyDown(KeyCode.Q))
-        GameController.Instance.UseOrb(Enemy.EnemyColorKind.Red);
+        GameController.Instance.UseOrb(EnemyColorKind.Red);
       else if (Input.GetKeyDown(KeyCode.W))
-        GameController.Instance.UseOrb(Enemy.EnemyColorKind.Green);
+        GameController.Instance.UseOrb(EnemyColorKind.Green);
       else if (Input.GetKeyDown(KeyCode.E))
-        GameController.Instance.UseOrb(Enemy.EnemyColorKind.Blue);
+        GameController.Instance.UseOrb(EnemyColorKind.Blue);
     }
   }
 }

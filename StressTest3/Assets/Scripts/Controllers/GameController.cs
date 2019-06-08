@@ -53,12 +53,12 @@ namespace Controllers
 
     public float OrdDuration = 11;
     private float _orbDurationLeft;
-    public Enemy.EnemyColorKind ActiveOrb;
+    public EnemyColorKind ActiveOrb;
 
     void Awake()
     {
       Instance = this;
-      ActiveOrb = Enemy.EnemyColorKind.None;
+      ActiveOrb = EnemyColorKind.None;
     }
 
     void Update()
@@ -81,7 +81,7 @@ namespace Controllers
       _orbDurationLeft -= Time.deltaTime;
 
       if (_orbDurationLeft <= 0)
-        ActiveOrb = Enemy.EnemyColorKind.None;
+        ActiveOrb = EnemyColorKind.None;
     }
 
     private IEnumerator WaveCoroutine()
@@ -138,7 +138,7 @@ namespace Controllers
       return spawned;
     }
 
-    public void UseOrb(Enemy.EnemyColorKind kind)
+    public void UseOrb(EnemyColorKind kind)
     {
       ActiveOrb = kind;
       _orbDurationLeft = OrdDuration;
@@ -177,7 +177,7 @@ namespace Controllers
 
       var enemy = go.GetComponent<Enemy>();
 
-      var enemyKind = (Enemy.EnemyColorKind)Random.Range(0, 3);
+      var enemyKind = (EnemyColorKind)Random.Range(0, 3);
       enemy.SetKind(kind, enemyKind);
     }
 

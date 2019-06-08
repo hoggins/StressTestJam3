@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Letters
 {
-    public class LetterBootstrap : MonoBehaviour
+  public class LetterBootstrap : MonoBehaviour
+  {
+    private void Awake()
     {
-        private void Awake()
-        {
-            var db = LetterCore.LoadDb();
-            
-            Debug.Log("some " + db[2]);
-        }
+      var db = LetterCore.LoadDb();
+
+      Debug.Log("some " + db[2]);
     }
+  }
 }

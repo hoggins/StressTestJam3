@@ -11,14 +11,6 @@ namespace Characters
 {
   public class Enemy : MonoBehaviour
   {
-    public enum EnemyColorKind
-    {
-      Red,
-      Green,
-      Blue,
-      None
-    }
-
     [Serializable]
     public class EnemyPreset
     {
