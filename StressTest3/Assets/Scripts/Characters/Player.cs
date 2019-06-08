@@ -11,7 +11,7 @@ namespace Characters
     public float Hp;
     public float Speed = 3;
 
-    public Transform FirePoint;
+    public Transform[] FirePoints;
     public GameObject BulletPrefab;
 
     private float _speed = 0f;
@@ -27,6 +27,14 @@ namespace Characters
 
     private void Update()
     {
+      var closestEnemy = GetClosestEnemy(out var distance);
+
+      if (closestEnemy != null)
+      {
+        var direction = (closestEnemy.transform.position - transform.position).normalized;
+        transform.rotation =Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime*10);
+      }
+
       if (!GameController.Instance.IsWaveInProgress)
         _speed = Mathf.Lerp(_speed, Speed, Time.deltaTime*3);
       else
@@ -72,16 +80,21 @@ namespace Characters
     }
 
 
+    private int _currentFirePoint = 0;
     private void ShootEnemy(float strength, Enemy closestEnemy)
     {
       var go = GameObject.Instantiate(BulletPrefab);
-      go.transform.position = FirePoint.position;
-      go.transform.rotation = FirePoint.rotation;
+
+      _currentFirePoint++;
+      var firePoint = FirePoints[_currentFirePoint % FirePoints.Length];
+
+      go.transform.position = firePoint.position;
       go.transform.localScale = new Vector3(1, 1, 1);
 
       var bullet = go.GetComponent<Bullet>();
 
-      var direction = (closestEnemy.transform.position - FirePoint.position).normalized;
+      var direction = (closestEnemy.transform.position - firePoint.position).normalized;
+      go.transform.rotation = Quaternion.LookRotation(direction);
 
       var damage = strength * Damage;
       bullet.Init(direction, 60, damage);
