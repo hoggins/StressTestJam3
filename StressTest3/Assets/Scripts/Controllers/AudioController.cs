@@ -70,8 +70,11 @@ namespace Controllers
     }
 
          private Coroutine _musicCoroutine;
+         private bool _isPlayingMenuMusic;
     public void PlayMusic()
     {
+      
+      
       Music.Play();
       Music.volume = 0f;
       
@@ -89,6 +92,10 @@ namespace Controllers
          private Coroutine _musicMenuCoroutine;
      public void PlayMusicMenu()
     {
+      if (_isPlayingMenuMusic)
+        return;
+      _isPlayingMenuMusic = true;
+      
       MusicMenu.Play();
       MusicMenu.volume = 0f;
       if(_musicMenuCoroutine != null)
@@ -97,6 +104,10 @@ namespace Controllers
     }
     public void StopMusicMenu()
     {
+      if (!_isPlayingMenuMusic)
+        return;
+      _isPlayingMenuMusic = false;
+      
       if(_musicMenuCoroutine != null)
         StopCoroutine(_musicMenuCoroutine);
       _musicMenuCoroutine = StartCoroutine(ChangeVolumeTo(MusicMenu, 0f, 0.3f));
