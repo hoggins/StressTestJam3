@@ -14,8 +14,8 @@ namespace UI
     private void OnEnable()
     {
       PlayButton.onClick.AddListener(() => SceneManager.LoadScene("MainScene"));
-      PlayButton.onClick.AddListener(() => SceneManager.LoadScene("CharacterScene"));
-      PlayButton.onClick.AddListener(() => Application.Quit());
+      CharacterButton.onClick.AddListener(() => SceneManager.LoadScene("CharacterScene"));
+      ExitButton.onClick.AddListener(() => Application.Quit());
     }
 
     private void OnDisable()
