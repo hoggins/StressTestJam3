@@ -51,19 +51,37 @@ namespace Controllers
       {SpawnKind.Big, 5.0f},
     };
 
+    public float OrdDuration = 11;
+    private float _orbDurationLeft;
+    public Enemy.EnemyColorKind ActiveOrb;
+
     void Awake()
     {
       Instance = this;
+      ActiveOrb = Enemy.EnemyColorKind.None;
     }
 
     void Update()
     {
+      UpdateOrb();
+
       if (!IsWaveInProgress && !_spawnCoroutineStarted)
       {
         StartCoroutine(WaveCoroutine());
         SpawnDifficulty += DifficultyRising;
         MaxSpawnPerWave += MaxSpawnRising;
       }
+    }
+
+    private void UpdateOrb()
+    {
+      if(_orbDurationLeft <= 0)
+        return;
+
+      _orbDurationLeft -= Time.deltaTime;
+
+      if (_orbDurationLeft <= 0)
+        ActiveOrb = Enemy.EnemyColorKind.None;
     }
 
     private IEnumerator WaveCoroutine()
@@ -126,6 +144,9 @@ namespace Controllers
 
     public void UseOrb(Enemy.EnemyColorKind kind)
     {
+      ActiveOrb = kind;
+      _orbDurationLeft = OrdDuration;
+
       foreach (var enemy in Enemy.Enemies.ToList())
       {
         if (enemy.ColorKind == kind)

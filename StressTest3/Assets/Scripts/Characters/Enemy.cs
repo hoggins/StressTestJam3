@@ -14,7 +14,8 @@ namespace Characters
     {
       Red,
       Green,
-      Blue
+      Blue,
+      None
     }
 
     [Serializable]
@@ -45,6 +46,7 @@ namespace Characters
     public Texture RedTexture;
     public Texture GreenTexture;
     public Texture BlueTexture;
+    public float OrbDamageMultiplier = 2;
 
     void Awake()
     {
@@ -104,6 +106,9 @@ namespace Characters
 
     public void TakeDamage(float damage)
     {
+      if (GameController.Instance.ActiveOrb != EnemyColorKind.None && GameController.Instance.ActiveOrb != ColorKind)
+        damage *= OrbDamageMultiplier;
+
       Hp -= damage;
 
       if (Hp <= 0)
@@ -139,7 +144,8 @@ namespace Characters
       {
         foreach (var material in r.materials)
         {
-          material.SetTexture("_MainTex", texture);
+          material.mainTexture = texture;
+//          material.SetTexture("_Main", texture);
         }
       }
     }
