@@ -6,6 +6,7 @@ namespace Characters
   public class Player : MonoBehaviour
   {
     public static Player Instance;
+    public float MaxHp;
     public float Hp;
 
     public Transform FirePoint;
@@ -27,6 +28,7 @@ namespace Characters
     private void Awake()
     {
       Instance = this;
+      Hp = MaxHp;
     }
 
     private void Update()

@@ -13,6 +13,7 @@ namespace Characters
       Blue
     }
 
+    public float MaxHp = 30;
     public float Hp = 10;
     public float Speed = 3;
     public float Damage = 1;
@@ -23,6 +24,11 @@ namespace Characters
 
     public float StopDistance = 3;
     public static readonly List<Enemy> Enemies = new List<Enemy>();
+
+    void Awake()
+    {
+      Hp = MaxHp;
+    }
 
     private void OnEnable()
     {
@@ -49,6 +55,7 @@ namespace Characters
 
     private void DealDamageToPlayer()
     {
+      _lastAttackTimer -= Time.deltaTime;
       if(_lastAttackTimer >= 0)
         return;
 
