@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Controllers
 {
   public class GameController : MonoBehaviour
   {
+    public static GameController Instance;
+
     public GameObject EnemyPrefab;
+    public GameObject BigEnemyPrefab;
+
     public float SpawnDistanceMin = 30;
     public float SpawnDistanceMax = 40;
     public float SpawnXDiff = 20;
@@ -28,6 +34,8 @@ namespace Controllers
 
     public bool IsWaveInProgress => CurrentWaveDifficultyLeft > 0 || Enemy.Enemies.Count != 0;
 
+    public List<Enemy.EnemyPreset> Presets;
+
     public enum SpawnKind
     {
       Small,
@@ -39,6 +47,11 @@ namespace Controllers
       {SpawnKind.Small, 1.0f},
       {SpawnKind.Big, 5.0f},
     };
+
+    void Awake()
+    {
+      Instance = this;
+    }
 
     void Update()
     {
@@ -58,11 +71,11 @@ namespace Controllers
 
       while (CurrentWaveDifficultyLeft > 0)
       {
-      Debug.Log("Try spawn next group");
+        Debug.Log("Try spawn next group");
         if(!SpawnNextGroup())
           break;
 
-      Debug.Log("Spawn new group " + CurrentWaveDifficultyLeft);
+        Debug.Log("Spawn new group " + CurrentWaveDifficultyLeft);
         yield return new WaitForSeconds(Random.Range(TimeBetweenSpawnsMin, TimeBetweenSpawnsMax));
       }
     }
@@ -95,7 +108,8 @@ namespace Controllers
 
     private void Spawn(SpawnKind kind)
     {
-      var go = GameObject.Instantiate(EnemyPrefab);
+      var go = CreateEnemyGo(kind);
+
       go.transform.position = Player.Instance.transform.position
                               + new Vector3(Random.Range(-SpawnXDiff, SpawnXDiff),
                                 0,
@@ -106,6 +120,22 @@ namespace Controllers
 
       var enemyKind = (Enemy.EnemyColorKind)Random.Range(0, 3);
       enemy.SetKind(kind, enemyKind);
+    }
+
+    private GameObject CreateEnemyGo(SpawnKind kind)
+    {
+      GameObject go = null;
+      switch (kind)
+      {
+        case SpawnKind.Small:
+          go = GameObject.Instantiate(EnemyPrefab);
+          break;
+        case SpawnKind.Big:
+          go = GameObject.Instantiate(BigEnemyPrefab);
+          break;
+      }
+
+      return go;
     }
   }
 }

@@ -401,7 +401,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440452850
 GameObject:
@@ -434,6 +434,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPrefab: {fileID: 6918320824718164093, guid: 015d5b3171e5642d5a461f2efe9aa56f,
     type: 3}
+  BigEnemyPrefab: {fileID: 6918320824718164093, guid: b6fc97eca72d440ee9fd75e45facb7f3,
+    type: 3}
   SpawnDistanceMin: 30
   SpawnDistanceMax: 40
   SpawnXDiff: 20
@@ -444,6 +446,18 @@ MonoBehaviour:
   TimeBetweenSpawnsMax: 5
   TimeToWalkMin: 1
   TimeToWalkMax: 3
+  DifficultyRising: 0.3
+  Presets:
+  - Hp: 30
+    Speed: 2
+    Damage: 5
+    AttackCooldown: 1
+    Kind: 0
+  - Hp: 100
+    Speed: 0.5
+    Damage: 30
+    AttackCooldown: 2
+    Kind: 1
 --- !u!4 &1440452852
 Transform:
   m_ObjectHideFlags: 0
@@ -456,37 +470,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1628888775
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1628888776}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1628888776
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628888775}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900912799
 GameObject:
@@ -594,7 +578,7 @@ RectTransform:
   m_Children:
   - {fileID: 430419884}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -651,7 +635,7 @@ PrefabInstance:
     - target: {fileID: 7132914745169181742, guid: b76027506a9d849d49c53ce73a5b972d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7132914745169181742, guid: b76027506a9d849d49c53ce73a5b972d,
         type: 3}

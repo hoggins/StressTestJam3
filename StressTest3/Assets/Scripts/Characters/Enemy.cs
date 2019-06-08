@@ -25,7 +25,6 @@ namespace Characters
       public GameController.SpawnKind Kind;
     }
 
-    public List<EnemyPreset> Presets;
 
     public float Hp = 10;
 
@@ -87,7 +86,7 @@ namespace Characters
 
     public void SetKind(GameController.SpawnKind kind, EnemyColorKind colorKind)
     {
-      Preset = Presets.Find(p => p.Kind == kind);
+      Preset = GameController.Instance.Presets.Find(p => p.Kind == kind);
       ColorKind = colorKind;
     }
   }

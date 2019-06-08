@@ -55,7 +55,7 @@ namespace Characters
 
         var direction = (closestEnemy.transform.position - FirePoint.position).normalized;
 
-        bullet.Init(direction, 5,  damage);
+        bullet.Init(direction, 60,  damage);
       }
     }
 
