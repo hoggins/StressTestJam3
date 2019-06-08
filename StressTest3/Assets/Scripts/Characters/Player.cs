@@ -51,6 +51,9 @@ namespace Characters
       {
         ShootEnemy(strength, enemy);
       }
+
+      if(Enemy.Enemies.Count > 0)
+        CameraController.Instance.Shaker.ShakeOnce(1.85f+ Enemy.Enemies.Count /4f, 2f, 0f, 0.45f + Enemy.Enemies.Count / 5f, new Vector3(), new Vector3(1,1,1));
     }
 
     public void Heal(float percent)
@@ -105,6 +108,7 @@ namespace Characters
     public void TakeDamage(float damage)
     {
       Hp -= damage;
+      CameraController.Instance.Shaker.ShakeOnce(0.285f*damage, 2f, 0f, 0.85f, new Vector3(), new Vector3(1,1,1));
     }
   }
 }

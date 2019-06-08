@@ -89,18 +89,14 @@ namespace Controllers
       _spawnCoroutineStarted = true;
       CurrentWaveDifficultyLeft = SpawnDifficulty;
 
-      Debug.Log("Prepare wave");
       yield return new WaitForSeconds(Random.Range(TimeToWalkMin, TimeToWalkMax));
-      Debug.Log("Do start");
       _isSpawnInProgres = true;
 
       while (CurrentWaveDifficultyLeft > 0)
       {
-        Debug.Log("Try spawn next group");
         if(!SpawnNextGroup(true))
           break;
 
-        Debug.Log("Spawn new group " + CurrentWaveDifficultyLeft);
         if(SpawnNextGroup(false))
           yield return new WaitForSeconds(Random.Range(TimeBetweenSpawnsMin, TimeBetweenSpawnsMax));
       }
