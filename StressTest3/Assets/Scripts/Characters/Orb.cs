@@ -1,4 +1,5 @@
 using System;
+using Controllers;
 using Letters;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -48,6 +49,7 @@ namespace Characters
       if (Vector3.Distance(transform.position, Player.Instance.transform.position) < 1f)
       {
         LetterKeyboard.Instance?.PushOrb(Kind);
+        AudioController.Instance.PlayOrbPickup();
         Destroy(gameObject);
       }
     }

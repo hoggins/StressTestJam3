@@ -48,6 +48,7 @@ namespace Characters
       var closestEnemy = GetClosestEnemy(out var distance);
       if (closestEnemy != null)
       {
+        AudioController.Instance.PlayShoot();
         CameraController.Instance.Shaker.ShakeOnce(1.85f, 2f, 0f, 0.45f, new Vector3(), new Vector3(1,1,1));
         ShootEnemy(strength, closestEnemy);
       }
@@ -60,12 +61,17 @@ namespace Characters
         ShootEnemy(strength, enemy);
       }
 
-      if(Enemy.Enemies.Count > 0)
-        CameraController.Instance.Shaker.ShakeOnce(1.85f+ Enemy.Enemies.Count /4f, 2f, 0f, 0.45f + Enemy.Enemies.Count / 5f, new Vector3(), new Vector3(1,1,1));
+      if (Enemy.Enemies.Count > 0)
+      {
+        AudioController.Instance.PlayMultishot();
+        CameraController.Instance.Shaker.ShakeOnce(1.85f + Enemy.Enemies.Count / 4f, 2f, 0f,
+          0.45f + Enemy.Enemies.Count / 5f, new Vector3(), new Vector3(1, 1, 1));
+      }
     }
 
     public void Heal(float percent)
     {
+      AudioController.Instance.PlayHeal();
       Hp += MaxHp * percent;
       if (Hp > MaxHp)
         Hp = MaxHp;
@@ -73,6 +79,7 @@ namespace Characters
 
     public void FreezeEnemies(float duration)
     {
+      AudioController.Instance.PlayFreeze();
       foreach (var enemy in Enemy.Enemies)
       {
         enemy.Freeze(duration);
@@ -95,6 +102,7 @@ namespace Characters
         }
       }
 
+      AudioController.Instance.PlayHeroMelee();
       CameraController.Instance.Shaker.ShakeOnce(2.25f+ enemiesCount/4f, 2f, 0f, 0.65f + enemiesCount/ 5f, new Vector3(), new Vector3(1,1,1));
     }
 
@@ -142,10 +150,20 @@ namespace Characters
       return closestEnemy;
     }
 
+    private float _lastHitSoundPlayTime;
     public void TakeDamage(float damage)
     {
+      if(Hp <= 0f)
+        return;
+      
       Hp -= damage;
       CameraController.Instance.Shaker.ShakeOnce(0.285f*damage, 2f, 0f, 0.85f, new Vector3(), new Vector3(1,1,1));
+
+      if (_lastHitSoundPlayTime + 1f < Time.time)
+      {
+        AudioController.Instance.PlayHeroHit();
+        _lastHitSoundPlayTime = Time.time;
+      }
     }
   }
 }

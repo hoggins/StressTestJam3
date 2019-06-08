@@ -1,4 +1,5 @@
 using System;
+using Controllers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ namespace UI
 
     private void OnEnable()
     {
+      AudioController.Instance.PlayMusicMenu();
       PlayButton.onClick.AddListener(() => SceneManager.LoadScene("MainScene"));
       CharacterButton?.onClick?.AddListener(() => SceneManager.LoadScene("CharacterScene"));
       ExitButton?.onClick?.AddListener(() => Application.Quit());
@@ -20,6 +22,7 @@ namespace UI
 
     private void OnDisable()
     {
+      AudioController.Instance.StopMusicMenu();
       PlayButton.onClick.RemoveAllListeners();
       CharacterButton?.onClick?.RemoveAllListeners();
       ExitButton?.onClick?.RemoveAllListeners();
