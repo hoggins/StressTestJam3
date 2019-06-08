@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = System.Random;
@@ -39,7 +40,7 @@ namespace Letters
         var chance = (index + 1d) / (BaseLetters.Count - res.Count);
         if (_random.NextDouble() < chance)
         {
-          res.Add(letter);
+          res.Add(letter.ToString().ToUpper()[0]);
         }
       }
 
@@ -48,7 +49,7 @@ namespace Letters
 
     public static int GetWordLength(string letters)
     {
-      var isWord = _words.Any(w => w == letters);
+      var isWord = _words.Any(w => string.Compare(w, letters, StringComparison.InvariantCultureIgnoreCase) == 0);
       return isWord ? letters.Length : 0;
     }
   }

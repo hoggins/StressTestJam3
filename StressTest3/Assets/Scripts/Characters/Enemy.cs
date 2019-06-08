@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Controllers;
+using Model;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
@@ -40,7 +41,7 @@ namespace Characters
 
     public GameObject OrbPrefab;
     public float OrbDamageMultiplier = 2;
-    public float OrbDropChance = 0.05f;
+    
 
 
     private float _freezeDuration;
@@ -113,7 +114,7 @@ namespace Characters
 
       if (Hp <= 0)
       {
-        if (Random.value <= OrbDropChance)
+        if (Random.value <= GameBalance.OrbDropChance)
         {
           var go = GameObject.Instantiate(OrbPrefab);
           go.transform.position = transform.position;
