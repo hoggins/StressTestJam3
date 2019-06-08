@@ -40,6 +40,7 @@ namespace Characters
       var closestEnemy = GetClosestEnemy(out var distance);
       if (closestEnemy != null)
       {
+        CameraController.Instance.Shaker.ShakeOnce(1.85f, 2f, 0f, 0.45f, new Vector3(), new Vector3(1,1,1));
         ShootEnemy(strength, closestEnemy);
       }
     }
