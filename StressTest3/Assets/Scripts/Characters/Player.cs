@@ -45,7 +45,31 @@ namespace Characters
       }
     }
 
-    private void ShootEnemy(int strength, Enemy closestEnemy)
+    public void ShootAll(float strength)
+    {
+      foreach (var enemy in Enemy.Enemies)
+      {
+        ShootEnemy(strength, enemy);
+      }
+    }
+
+    public void Heal(float percent)
+    {
+      Hp += MaxHp * percent;
+      if (Hp > MaxHp)
+        Hp = MaxHp;
+    }
+
+    public void FreezeEnemies(float duration)
+    {
+      foreach (var enemy in Enemy.Enemies)
+      {
+        enemy.Freeze(duration);
+      }
+    }
+
+
+    private void ShootEnemy(float strength, Enemy closestEnemy)
     {
       var go = GameObject.Instantiate(BulletPrefab);
       go.transform.position = FirePoint.position;

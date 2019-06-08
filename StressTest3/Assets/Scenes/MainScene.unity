@@ -693,7 +693,7 @@ MonoBehaviour:
   TimeBetweenSpawnsMax: 5
   TimeToWalkMin: 1
   TimeToWalkMax: 3
-  DifficultyRising: 0.5
+  DifficultyRising: 0.65
   MaxSpawnRising: 0.15
   Presets:
   - Hp: 30
@@ -706,6 +706,8 @@ MonoBehaviour:
     Damage: 30
     AttackCooldown: 2
     Kind: 1
+  OrdDuration: 11
+  ActiveOrb: 0
 --- !u!4 &1440452852
 Transform:
   m_ObjectHideFlags: 0

@@ -47,10 +47,7 @@ namespace Characters
     public Texture GreenTexture;
     public Texture BlueTexture;
     public float OrbDamageMultiplier = 2;
-
-    void Awake()
-    {
-    }
+    private float _freezeDuration;
 
     private void OnEnable()
     {
@@ -64,14 +61,21 @@ namespace Characters
 
     private void Update()
     {
-      var distance = Vector3.Distance(transform.position, Player.Instance.transform.position);
-      var direction = -(transform.position - Player.Instance.transform.position).normalized;
+      if (_freezeDuration <= 0f)
+      {
+        var distance = Vector3.Distance(transform.position, Player.Instance.transform.position);
+        var direction = -(transform.position - Player.Instance.transform.position).normalized;
 
-      if (distance > StopDistance)
-        transform.position += Preset.Speed * Time.deltaTime * direction;
+        if (distance > StopDistance)
+          transform.position += Preset.Speed * Time.deltaTime * direction;
+        else
+        {
+          DealDamageToPlayer();
+        }
+      }
       else
       {
-        DealDamageToPlayer();
+        _freezeDuration -= Time.deltaTime;
       }
 
       PushCloseEnemies();
@@ -150,5 +154,10 @@ namespace Characters
       }
     }
 
+    public void Freeze(float duration)
+    {
+      _freezeDuration = Mathf.Max(_freezeDuration, duration);
+
+    }
   }
 }

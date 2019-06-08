@@ -48,7 +48,7 @@ namespace Controllers
     public Dictionary<SpawnKind, float> SpawnCosts = new Dictionary<SpawnKind, float>()
     {
       {SpawnKind.Small, 1.0f},
-      {SpawnKind.Big, 5.0f},
+      {SpawnKind.Big, 4.0f},
     };
 
     public float OrdDuration = 11;
