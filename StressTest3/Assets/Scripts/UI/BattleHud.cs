@@ -12,12 +12,17 @@ namespace UI
     public GameObject GameLost;
     public CanvasGroup GameLostCanvasGroup;
 
+    public Button RetryButton;
+    public Button LeaveButton;
+
 
     private bool _lost = false;
 
     void Awake()
     {
       Input.simulateMouseWithTouches = true;
+      RetryButton.onClick.AddListener(() => SceneManager.LoadScene("MainScene"));
+      LeaveButton.onClick.AddListener(() => SceneManager.LoadScene("StartMenu"));
     }
 
     private void Update()
