@@ -18,7 +18,7 @@ namespace Letters
 
     public Action<Letter> OnLetter;
     public Action<List<Letter>> OnSubmit;
-
+    public Action OnMelee;
 
     private void Awake()
     {
@@ -56,6 +56,11 @@ namespace Letters
       OnSubmit?.Invoke(_letters.GetValue());
       _letters.Reset();
       RechargeButtons();
+    }
+
+    public void Melee()
+    {
+      OnMelee?.Invoke();
     }
 
     private void ButtonOnLetter(LetterButton sender, Letter letter)

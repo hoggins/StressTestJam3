@@ -16,6 +16,8 @@ namespace Controllers
       _keyboard = GetComponentInChildren<LetterKeyboard>();
       _keyboard.OnSubmit += OnSubmit;
       _keyboard.OnLetter += OnLetter;
+      _keyboard.OnMelee += () => Player.Instance.MeleeAttack();
+
       /*      if (Input.GetKeyDown(KeyCode.Alpha1))
         
 
