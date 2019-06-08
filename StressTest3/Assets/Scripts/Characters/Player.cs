@@ -80,6 +80,26 @@ namespace Characters
     }
 
 
+    public float MeleeDamage = 10f;
+    public float MeleeRadius = 4f;
+    public void MeleeAttack()
+    {
+      var colliders = Physics.OverlapSphere(transform.position, MeleeRadius);
+      foreach (var c in colliders)
+      {
+        if (c.gameObject.CompareTag("Enemy"))
+        {
+          c.GetComponent<Enemy>().TakeDamage(MeleeDamage);
+        }
+      }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+      Gizmos.color = new Color(1,0.25f,0.25f, 0.25f);
+      Gizmos.DrawSphere(transform.position, MeleeRadius);
+    }
+
     private int _currentFirePoint = 0;
     private void ShootEnemy(float strength, Enemy closestEnemy)
     {

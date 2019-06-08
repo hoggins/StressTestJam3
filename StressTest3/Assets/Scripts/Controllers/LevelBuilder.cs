@@ -14,7 +14,7 @@ namespace Controllers
       {
         var prefab = ChunkPrefabs[Random.Range(0, ChunkPrefabs.Count)];
         var go = Instantiate(prefab);
-        go.transform.position = new Vector3(0, -1, i * ChunkLength);
+        go.transform.position = new Vector3(0, -2, i * ChunkLength);
       }
     }
   }

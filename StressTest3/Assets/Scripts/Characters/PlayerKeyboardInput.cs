@@ -17,6 +17,8 @@ namespace Characters
         Player.Instance.FreezeEnemies(3f);
       else if(Input.GetKeyDown(KeyCode.D))
         Player.Instance.ShootAll(3);
+      else if(Input.GetKeyDown(KeyCode.F))
+        Player.Instance.MeleeAttack();
 
       if (Input.GetKeyDown(KeyCode.Q))
         GameController.Instance.UseOrb(Enemy.EnemyColorKind.Red);
