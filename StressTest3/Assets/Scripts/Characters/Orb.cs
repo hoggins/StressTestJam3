@@ -1,4 +1,5 @@
 using System;
+using Controllers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -47,6 +48,7 @@ namespace Characters
       if (Vector3.Distance(transform.position, Player.Instance.transform.position) < 1f)
       {
         //todo: pick up orb to inventory
+        AudioController.Instance.PlayOrbPickup();
         Destroy(gameObject);
       }
     }

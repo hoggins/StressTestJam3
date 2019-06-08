@@ -119,6 +119,16 @@ namespace Characters
           go.transform.position = transform.position;
         }
 
+        switch (SpawnKind)
+        {
+          case GameController.SpawnKind.Small:
+            AudioController.Instance.PlayDeathSmall();
+            break;
+          case GameController.SpawnKind.Big:
+            AudioController.Instance.PlayDeathBig();
+            break;
+        }
+
         Destroy(gameObject);
       }
     }

@@ -1,5 +1,6 @@
 using System;
 using Characters;
+using Controllers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,7 +23,11 @@ namespace UI
     {
       Input.simulateMouseWithTouches = true;
       RetryButton.onClick.AddListener(() => SceneManager.LoadScene("MainScene"));
-      LeaveButton.onClick.AddListener(() => SceneManager.LoadScene("StartMenu"));
+      LeaveButton.onClick.AddListener(() =>
+      {
+        AudioController.Instance.StopMusic();
+        SceneManager.LoadScene("StartMenu");
+      });
     }
 
     private void Update()
@@ -55,6 +60,7 @@ namespace UI
       _lost = true;
       GameLostCanvasGroup.alpha = 0f;
 
+      AudioController.Instance.PlayDeathHero();
       GameLost.gameObject.SetActive(true);
     }
 

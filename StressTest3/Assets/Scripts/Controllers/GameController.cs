@@ -61,6 +61,12 @@ namespace Controllers
       ActiveOrb = EnemyColorKind.None;
     }
 
+    private void OnEnable()
+    {  
+      if(!AudioController.Instance.Music.isPlaying)
+        AudioController.Instance.PlayMusic();
+    }
+
     void Update()
     {
       UpdateOrb();
@@ -140,6 +146,20 @@ namespace Controllers
 
     public void UseOrb(EnemyColorKind kind)
     {
+      switch (kind)
+      {
+        case EnemyColorKind.Red:
+          AudioController.Instance.PlayOrbRed();
+          break;
+        case EnemyColorKind.Green:
+          AudioController.Instance.PlayOrbGreen();
+          break;
+        case EnemyColorKind.Blue:
+          AudioController.Instance.PlayOrbBlue();
+          break;
+      }
+      
+      
       ActiveOrb = kind;
       _orbDurationLeft = OrdDuration;
 
