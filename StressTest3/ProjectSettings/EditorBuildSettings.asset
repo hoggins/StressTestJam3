@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LetterScene.unity
+    guid: f73724a6d02f0114cbd72e8d1beef525
   m_configObjects: {}
