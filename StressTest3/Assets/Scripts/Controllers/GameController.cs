@@ -124,6 +124,30 @@ namespace Controllers
       return spawned;
     }
 
+    public void UseOrb(Enemy.EnemyColorKind kind)
+    {
+      foreach (var enemy in Enemy.Enemies.ToList())
+      {
+        if (enemy.ColorKind == kind)
+        {
+          if (enemy.SpawnKind != SpawnKind.Big)
+          {
+            var go = CreateEnemyGo(SpawnKind.Big);
+            var bigEnemy = go.GetComponent<Enemy>();
+            bigEnemy.SetKind(SpawnKind.Big, enemy.ColorKind);
+            bigEnemy.transform.position = enemy.transform.position;
+            bigEnemy.transform.rotation = enemy.transform.rotation;
+
+            Destroy(enemy.gameObject);
+          }
+          else
+          {
+            enemy.Hp = enemy.Preset.Hp;
+          }
+        }
+      }
+    }
+
     private void Spawn(SpawnKind kind)
     {
       var go = CreateEnemyGo(kind);

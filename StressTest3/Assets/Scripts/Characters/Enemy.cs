@@ -34,10 +34,17 @@ namespace Characters
     public EnemyPreset Preset;
 
     public EnemyColorKind ColorKind;
+    public GameController.SpawnKind SpawnKind;
     private float _lastAttackTimer;
 
     public float StopDistance = 3;
     public static readonly List<Enemy> Enemies = new List<Enemy>();
+
+    public List<Renderer> Renderers;
+
+    public Texture RedTexture;
+    public Texture GreenTexture;
+    public Texture BlueTexture;
 
     void Awake()
     {
@@ -109,7 +116,33 @@ namespace Characters
     {
       Preset = GameController.Instance.Presets.Find(p => p.Kind == kind);
       ColorKind = colorKind;
+      SpawnKind = kind;
       Hp = Preset.Hp;
+
+      switch (colorKind)
+      {
+        case EnemyColorKind.Red:
+          SetColor(RedTexture);
+          break;
+        case EnemyColorKind.Green:
+          SetColor(GreenTexture);
+          break;
+        case EnemyColorKind.Blue:
+          SetColor(BlueTexture);
+          break;
+      }
     }
+
+    private void SetColor(Texture texture)
+    {
+      foreach (var r in Renderers)
+      {
+        foreach (var material in r.materials)
+        {
+          material.SetTexture("_MainTex", texture);
+        }
+      }
+    }
+
   }
 }

@@ -1,4 +1,5 @@
 using System;
+using Controllers;
 using UnityEngine;
 
 namespace Characters
@@ -8,15 +9,14 @@ namespace Characters
     private void Update()
     {
       if (Input.GetKeyDown(KeyCode.Alpha1))
-        Player.Instance.Attack(1);
-      else if (Input.GetKeyDown(KeyCode.Alpha2))
-        Player.Instance.Attack(2);
-      else if (Input.GetKeyDown(KeyCode.Alpha3))
-        Player.Instance.Attack(3);
-      else if (Input.GetKeyDown(KeyCode.Alpha4))
-        Player.Instance.Attack(4);
-      else if (Input.GetKeyDown(KeyCode.Alpha5))
-        Player.Instance.Attack(5);
+        Player.Instance.ShootClosestEnemy(1);
+
+      if (Input.GetKeyDown(KeyCode.Q))
+        GameController.Instance.UseOrb(Enemy.EnemyColorKind.Red);
+      else if (Input.GetKeyDown(KeyCode.W))
+        GameController.Instance.UseOrb(Enemy.EnemyColorKind.Green);
+      else if (Input.GetKeyDown(KeyCode.E))
+        GameController.Instance.UseOrb(Enemy.EnemyColorKind.Blue);
     }
   }
 }

@@ -18,17 +18,7 @@ namespace Characters
     private float _speed = 0f;
 
 
-    public int[] StrengthToDamage = new[]
-    {
-      1,
-      10,
-      50,
-      100,
-      200,
-      500,
-      1000,
-      5000
-    };
+    public float Damage = 10;
 
     private void Awake()
     {
@@ -46,27 +36,28 @@ namespace Characters
       transform.position += new Vector3(0, 0, Time.deltaTime*_speed);
     }
 
-    public void Attack(int strength)
+    public void ShootClosestEnemy(int strength)
     {
-      var damage = strength < StrengthToDamage.Length
-        ? StrengthToDamage[strength]
-        : StrengthToDamage[StrengthToDamage.Length - 1];
-
       var closestEnemy = GetClosestEnemy(out var distance);
-
       if (closestEnemy != null)
       {
-        var go = GameObject.Instantiate(BulletPrefab);
-        go.transform.position = FirePoint.position;
-        go.transform.rotation = FirePoint.rotation;
-        go.transform.localScale = new Vector3(1,1,1);
-
-        var bullet = go.GetComponent<Bullet>();
-
-        var direction = (closestEnemy.transform.position - FirePoint.position).normalized;
-
-        bullet.Init(direction, 60,  damage);
+        ShootEnemy(strength, closestEnemy);
       }
+    }
+
+    private void ShootEnemy(int strength, Enemy closestEnemy)
+    {
+      var go = GameObject.Instantiate(BulletPrefab);
+      go.transform.position = FirePoint.position;
+      go.transform.rotation = FirePoint.rotation;
+      go.transform.localScale = new Vector3(1, 1, 1);
+
+      var bullet = go.GetComponent<Bullet>();
+
+      var direction = (closestEnemy.transform.position - FirePoint.position).normalized;
+
+      var damage = strength * Damage;
+      bullet.Init(direction, 60, damage);
     }
 
     private Enemy GetClosestEnemy(out float minDistance)
