@@ -14,13 +14,14 @@ namespace Characters
     {
       Rigidbody.velocity = direction * speed;
       Damage = damage;
+      transform.rotation = Quaternion.LookRotation(direction);
     }
 
     private void OnCollisionEnter(Collision other)
     {
       if(IsDestroyed)
         return;
-      
+
       if (other.gameObject.CompareTag("Enemy"))
       {
         var enemy = other.gameObject.GetComponent<Enemy>();

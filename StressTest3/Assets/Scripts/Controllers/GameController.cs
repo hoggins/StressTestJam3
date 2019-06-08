@@ -20,7 +20,7 @@ namespace Controllers
     public float SpawnXDiff = 20;
 
     public float SpawnDifficulty = 1.8f;
-    public float MaxSpawnPerWave = 50;
+    public float MaxSpawnPerWave = 10;
 
     public float CurrentWaveDifficultyLeft;
 
@@ -31,8 +31,11 @@ namespace Controllers
     public float TimeToWalkMax = 3;
 
     public float DifficultyRising = 0.1f;
+    public float MaxSpawnRising = 0.1f;
 
-    public bool IsWaveInProgress => CurrentWaveDifficultyLeft > 0 || Enemy.Enemies.Count != 0;
+    public bool IsWaveInProgress => _isSpawnInProgres || Enemy.Enemies.Count != 0;
+    private bool _isSpawnInProgres = false;
+    private bool _spawnCoroutineStarted = false;
 
     public List<Enemy.EnemyPreset> Presets;
 
@@ -55,40 +58,49 @@ namespace Controllers
 
     void Update()
     {
-      if (!IsWaveInProgress)
+      if (!IsWaveInProgress && !_spawnCoroutineStarted)
       {
         StartCoroutine(WaveCoroutine());
         SpawnDifficulty += DifficultyRising;
+        MaxSpawnPerWave += MaxSpawnRising;
       }
     }
 
     private IEnumerator WaveCoroutine()
     {
+      _spawnCoroutineStarted = true;
       CurrentWaveDifficultyLeft = SpawnDifficulty;
+
       Debug.Log("Prepare wave");
       yield return new WaitForSeconds(Random.Range(TimeToWalkMin, TimeToWalkMax));
       Debug.Log("Do start");
+      _isSpawnInProgres = true;
 
       while (CurrentWaveDifficultyLeft > 0)
       {
         Debug.Log("Try spawn next group");
-        if(!SpawnNextGroup())
+        if(!SpawnNextGroup(true))
           break;
 
         Debug.Log("Spawn new group " + CurrentWaveDifficultyLeft);
-        yield return new WaitForSeconds(Random.Range(TimeBetweenSpawnsMin, TimeBetweenSpawnsMax));
+        if(SpawnNextGroup(false))
+          yield return new WaitForSeconds(Random.Range(TimeBetweenSpawnsMin, TimeBetweenSpawnsMax));
       }
+
+      _isSpawnInProgres = false;
+      _spawnCoroutineStarted = false;
     }
 
 
 
-    private bool SpawnNextGroup()
+    private bool SpawnNextGroup(bool canSpawn)
     {
       var spawned = false;
       var waveSpawnAmount = Random.Range(1f, MaxSpawnPerWave);
       var groupDifficulty = Mathf.Min(CurrentWaveDifficultyLeft, waveSpawnAmount);
 
-      CurrentWaveDifficultyLeft -= groupDifficulty;
+      if(canSpawn)
+        CurrentWaveDifficultyLeft -= groupDifficulty;
 
       while (groupDifficulty > 0f)
       {
@@ -96,11 +108,17 @@ namespace Controllers
         if (canSpawnItems.Count == 0)
           break;
 
-        var itemToSpawn = canSpawnItems[Random.Range(0, canSpawnItems.Count)];
-        Spawn(itemToSpawn.Key);
-
-        groupDifficulty -= itemToSpawn.Value;
         spawned = true;
+
+        if (canSpawn)
+        {
+          var itemToSpawn = canSpawnItems[Random.Range(0, canSpawnItems.Count)];
+          Spawn(itemToSpawn.Key);
+
+          groupDifficulty -= itemToSpawn.Value;
+        }
+        else
+          break;
       }
 
       return spawned;

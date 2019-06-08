@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Controllers;
 using UnityEditor.Presets;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Characters
 {
@@ -62,6 +64,25 @@ namespace Characters
       {
         DealDamageToPlayer();
       }
+
+      PushCloseEnemies();
+    }
+
+    private void PushCloseEnemies()
+    {
+      foreach (var enemy in Enemies)
+      {
+        if (enemy == this)
+          continue;
+
+        var distance = Vector3.Distance(enemy.transform.position, transform.position);
+        const float pushDistance = 1.5f;
+        if (distance < pushDistance)
+        {
+          var dir = (transform.position - enemy.transform.position).normalized;
+          transform.position += Time.deltaTime * (distance/pushDistance) * dir;
+        }
+      }
     }
 
     private void DealDamageToPlayer()
@@ -88,6 +109,7 @@ namespace Characters
     {
       Preset = GameController.Instance.Presets.Find(p => p.Kind == kind);
       ColorKind = colorKind;
+      Hp = Preset.Hp;
     }
   }
 }

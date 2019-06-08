@@ -1,4 +1,6 @@
 using System;
+using Controllers;
+using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
 namespace Characters
@@ -8,9 +10,12 @@ namespace Characters
     public static Player Instance;
     public float MaxHp;
     public float Hp;
+    public float Speed = 3;
 
     public Transform FirePoint;
     public GameObject BulletPrefab;
+
+    private float _speed = 0f;
 
 
     public int[] StrengthToDamage = new[]
@@ -33,7 +38,12 @@ namespace Characters
 
     private void Update()
     {
+      if (!GameController.Instance.IsWaveInProgress)
+        _speed = Mathf.Lerp(_speed, Speed, Time.deltaTime*3);
+      else
+        _speed = Mathf.Lerp(_speed, 0f, Time.deltaTime);
 
+      transform.position += new Vector3(0, 0, Time.deltaTime*_speed);
     }
 
     public void Attack(int strength)
