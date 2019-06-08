@@ -14,15 +14,15 @@ namespace UI
     private void OnEnable()
     {
       PlayButton.onClick.AddListener(() => SceneManager.LoadScene("MainScene"));
-      CharacterButton.onClick.AddListener(() => SceneManager.LoadScene("CharacterScene"));
-      ExitButton.onClick.AddListener(() => Application.Quit());
+      CharacterButton?.onClick?.AddListener(() => SceneManager.LoadScene("CharacterScene"));
+      ExitButton?.onClick?.AddListener(() => Application.Quit());
     }
 
     private void OnDisable()
     {
       PlayButton.onClick.RemoveAllListeners();
-      CharacterButton.onClick.RemoveAllListeners();
-      ExitButton.onClick.RemoveAllListeners();
+      CharacterButton?.onClick?.RemoveAllListeners();
+      ExitButton?.onClick?.RemoveAllListeners();
     }
   }
 }

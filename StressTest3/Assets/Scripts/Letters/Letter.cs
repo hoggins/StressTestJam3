@@ -11,5 +11,10 @@ namespace Letters
     {
       Value = v;
     }
+
+    public Letter(EnemyColorKind kind)
+    {
+      OrbColor = kind;
+    }
   }
 }

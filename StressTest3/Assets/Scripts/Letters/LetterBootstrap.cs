@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Letters
@@ -7,9 +6,7 @@ namespace Letters
   {
     private void Awake()
     {
-      var db = LetterCore.LoadDb();
-
-      Debug.Log("some " + db[2]);
+      LetterCore.Init();
     }
   }
 }

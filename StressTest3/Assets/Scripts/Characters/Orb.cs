@@ -1,5 +1,6 @@
 using System;
 using Controllers;
+using Letters;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -47,9 +48,24 @@ namespace Characters
 
       if (Vector3.Distance(transform.position, Player.Instance.transform.position) < 1f)
       {
-        //todo: pick up orb to inventory
+        LetterKeyboard.Instance?.PushOrb(Kind);
         AudioController.Instance.PlayOrbPickup();
         Destroy(gameObject);
+      }
+    }
+
+    public static Color GetColor(EnemyColorKind kind)
+    {
+      switch (kind)
+      {
+        case EnemyColorKind.Red:
+          return Color.red;
+        case EnemyColorKind.Green:
+          return Color.green;
+        case EnemyColorKind.Blue:
+          return Color.blue;
+        default:
+          throw new ArgumentOutOfRangeException(nameof(kind), kind, null);
       }
     }
   }

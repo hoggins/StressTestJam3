@@ -223,3 +223,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: {fileID: 2236269986815464919}
   Button: {fileID: 6816737543809772725}
+  Image: {fileID: 5806029049235051022}
