@@ -4,6 +4,7 @@ using System.Numerics;
 using Controllers;
 using UnityEditor.Presets;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 namespace Characters
@@ -46,7 +47,12 @@ namespace Characters
     public Texture RedTexture;
     public Texture GreenTexture;
     public Texture BlueTexture;
+
+    public GameObject OrbPrefab;
     public float OrbDamageMultiplier = 2;
+    public float OrbDropChance = 0.05f;
+
+
     private float _freezeDuration;
 
     private void OnEnable()
@@ -117,6 +123,12 @@ namespace Characters
 
       if (Hp <= 0)
       {
+        if (Random.value <= OrbDropChance)
+        {
+          var go = GameObject.Instantiate(OrbPrefab);
+          go.transform.position = transform.position;
+        }
+
         Destroy(gameObject);
       }
     }
