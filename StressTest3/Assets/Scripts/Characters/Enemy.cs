@@ -1,25 +1,38 @@
 using System;
 using System.Collections.Generic;
+using Controllers;
+using UnityEditor.Presets;
 using UnityEngine;
 
 namespace Characters
 {
   public class Enemy : MonoBehaviour
   {
-    public enum EnemyKind
+    public enum EnemyColorKind
     {
       Red,
       Green,
       Blue
     }
 
-    public float MaxHp = 30;
-    public float Hp = 10;
-    public float Speed = 3;
-    public float Damage = 1;
-    public float AttackCooldown = 1;
+    [Serializable]
+    public class EnemyPreset
+    {
+      public float Hp;
+      public float Speed;
+      public float Damage;
+      public float AttackCooldown;
+      public GameController.SpawnKind Kind;
+    }
 
-    public EnemyKind Kind;
+    public List<EnemyPreset> Presets;
+
+    public float Hp = 10;
+
+    [NonSerialized]
+    public EnemyPreset Preset;
+
+    public EnemyColorKind ColorKind;
     private float _lastAttackTimer;
 
     public float StopDistance = 3;
@@ -27,7 +40,6 @@ namespace Characters
 
     void Awake()
     {
-      Hp = MaxHp;
     }
 
     private void OnEnable()
@@ -46,7 +58,7 @@ namespace Characters
       var direction = -(transform.position - Player.Instance.transform.position).normalized;
 
       if (distance > StopDistance)
-        transform.position += Speed * Time.deltaTime * direction;
+        transform.position += Preset.Speed * Time.deltaTime * direction;
       else
       {
         DealDamageToPlayer();
@@ -59,8 +71,8 @@ namespace Characters
       if(_lastAttackTimer >= 0)
         return;
 
-      _lastAttackTimer = AttackCooldown;
-      Player.Instance.TakeDamage(Damage);
+      _lastAttackTimer = Preset.AttackCooldown;
+      Player.Instance.TakeDamage(Preset.Damage);
     }
 
     public void TakeDamage(float damage)
@@ -71,6 +83,12 @@ namespace Characters
       {
         Destroy(gameObject);
       }
+    }
+
+    public void SetKind(GameController.SpawnKind kind, EnemyColorKind colorKind)
+    {
+      Preset = Presets.Find(p => p.Kind == kind);
+      ColorKind = colorKind;
     }
   }
 }

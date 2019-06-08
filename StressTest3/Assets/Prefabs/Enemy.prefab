@@ -166,10 +166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e4035d6a074dcab3237c67ed6b6e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 30
+  Presets:
+  - Hp: 50
+    Speed: 1
+    Damage: 30
+    AttackCooldown: 2
+    Kind: 1
+  - Hp: 10
+    Speed: 2
+    Damage: 5
+    AttackCooldown: 1
+    Kind: 0
   Hp: 30
-  Speed: 3
-  Damage: 5
-  AttackCooldown: 1
-  Kind: 0
+  ColorKind: 0
   StopDistance: 3
