@@ -19,6 +19,8 @@ namespace Letters
 
     public static void Init()
     {
+      if (_words != null)
+        return;
       _words = LoadDb();
     }
     

@@ -1,45 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Characters;
 using UnityEngine;
 
 namespace Letters
 {
-  public class LetterController
+  [RequireComponent(typeof(LetterBootstrap))]
+  public class LetterKeyboard : MonoBehaviour
   {
-    public bool IsComplete => _nextCell == _letters.Count;
+    public static LetterKeyboard Instance { get; private set; }
     
-    private List<LetterCell> _letters;
-
-    private int _nextCell;
-
-    public LetterController(List<LetterCell> letters)
-    {
-      _letters = letters.OrderBy(l=>l.Index).ToList();
-    }
-
-    public void InputNext(Letter letter)
-    {
-      _letters[_nextCell++].SetLetter(letter);
-    }
-
-    public List<Letter> GetValue()
-    {
-      return _letters.Select(l => l.Letter).Where(l => l != null).ToList();
-    }
-
-    public void Reset()
-    {
-      _nextCell = 0;
-      foreach (var letter in _letters)
-      {
-        letter.SetLetter(null);
-      }
-    }
-  }
-
-public class LetterKeyboard : MonoBehaviour
-  {
     public GameObject ButtonRoot;
     public GameObject LetterRoot;
     private List<LetterButton> _buttons;
@@ -48,8 +19,10 @@ public class LetterKeyboard : MonoBehaviour
     public Action<Letter> OnLetter;
     public Action<List<Letter>> OnSubmit;
 
+
     private void Awake()
     {
+      Instance = this;
       _buttons = ButtonRoot.GetComponentsInChildren<LetterButton>().ToList();
       _letters = new LetterController(LetterRoot.GetComponentsInChildren<LetterCell>().ToList());
       _letters.Reset();
@@ -60,9 +33,22 @@ public class LetterKeyboard : MonoBehaviour
       }
     }
 
+    private void OnDestroy()
+    {
+      Instance = null;
+    }
+
     private void Start()
     {
       RechargeButtons(true);
+    }
+
+    public void PushOrb(EnemyColorKind kind)
+    {
+      var freeBtn = _buttons.FirstOrDefault(b => !b.IsUsed && !b.Letter.OrbColor.HasValue);
+      if (freeBtn == null)
+        return;
+      freeBtn.SetLetter(new Letter(kind));
     }
 
     public void Submit()
@@ -74,11 +60,17 @@ public class LetterKeyboard : MonoBehaviour
 
     private void ButtonOnLetter(LetterButton sender, Letter letter)
     {
+      sender.SetUsed(true);
+      
       if (letter.OrbColor.HasValue)
+      {
         OnLetter?.Invoke(letter);
+        RechargeButtons();
+        return;
+      }
       else if (_letters.IsComplete)
         return;
-      sender.SetUsed(true);
+      
       _letters.InputNext(letter);
       OnLetter?.Invoke(letter);
     }

@@ -13,8 +13,6 @@ namespace Controllers
 
     private void Awake()
     {
-      LetterCore.Init();
-      
       _keyboard = GetComponentInChildren<LetterKeyboard>();
       _keyboard.OnSubmit += OnSubmit;
       _keyboard.OnLetter += OnLetter;
