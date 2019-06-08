@@ -85,13 +85,17 @@ namespace Characters
     public void MeleeAttack()
     {
       var colliders = Physics.OverlapSphere(transform.position, MeleeRadius);
+      int enemiesCount = 0;
       foreach (var c in colliders)
       {
         if (c.gameObject.CompareTag("Enemy"))
         {
           c.GetComponent<Enemy>().TakeDamage(MeleeDamage);
+          enemiesCount++;
         }
       }
+
+      CameraController.Instance.Shaker.ShakeOnce(2.25f+ enemiesCount/4f, 2f, 0f, 0.65f + enemiesCount/ 5f, new Vector3(), new Vector3(1,1,1));
     }
 
     private void OnDrawGizmosSelected()

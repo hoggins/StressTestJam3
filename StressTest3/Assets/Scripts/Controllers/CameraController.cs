@@ -21,6 +21,7 @@ namespace Controllers
       Shaker = new CameraShaker();
       Instance = this;
       Rotation = transform.rotation;
+      Position = transform.position;
     }
 
     public void LateUpdate()
