@@ -30,6 +30,7 @@ namespace Letters
 
     public void Reset()
     {
+      _nextCell = 0;
       foreach (var letter in _letters)
       {
         letter.SetLetter(null);
@@ -44,6 +45,7 @@ public class LetterKeyboard : MonoBehaviour
     private List<LetterButton> _buttons;
     private LetterController _letters;
 
+    public Action<Letter> OnLetter;
     public Action<List<Letter>> OnSubmit;
 
     private void Awake()
@@ -72,10 +74,13 @@ public class LetterKeyboard : MonoBehaviour
 
     private void ButtonOnLetter(LetterButton sender, Letter letter)
     {
-      if (_letters.IsComplete)
+      if (letter.OrbColor.HasValue)
+        OnLetter?.Invoke(letter);
+      else if (_letters.IsComplete)
         return;
       sender.SetUsed(true);
       _letters.InputNext(letter);
+      OnLetter?.Invoke(letter);
     }
 
     private void RechargeButtons(bool isForce = false)
@@ -86,8 +91,13 @@ public class LetterKeyboard : MonoBehaviour
       for (var i = 0; i < targetButtons.Count; i++)
       {
         var button = targetButtons[i];
-        button.SetLetter(new Letter(letters[i]));
-        button.SetUsed(false);
+        if (letters.Count <= i)
+          button.SetUsed(true);
+        else
+        {
+          button.SetLetter(new Letter(letters[i]));
+          button.SetUsed(false);
+        }
       }
     }
   }

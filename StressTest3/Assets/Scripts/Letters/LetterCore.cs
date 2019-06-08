@@ -15,6 +15,13 @@ namespace Letters
 
     private static readonly Random _random = new Random(1);
 
+    private static List<string> _words;
+
+    public static void Init()
+    {
+      _words = LoadDb();
+    }
+    
     public static List<string> LoadDb()
     {
       var dat = (TextAsset) Resources.Load("db/zdb-win");
@@ -35,6 +42,12 @@ namespace Letters
       }
 
       return res;
+    }
+
+    public static int GetWordLength(string letters)
+    {
+      var isWord = _words.Any(w => w == letters);
+      return isWord ? letters.Length : 0;
     }
   }
 }
