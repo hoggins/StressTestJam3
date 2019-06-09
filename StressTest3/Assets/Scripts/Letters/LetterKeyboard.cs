@@ -84,7 +84,8 @@ namespace Letters
     private void RechargeButtons(bool isForce = false)
     {
       var targetButtons = isForce ? _buttons : _buttons.Where(b => b.IsUsed).ToList();
-      var letters = LetterCore.PickLetters(targetButtons.Count);
+      var excludeLetters = TakeLetters(targetButtons).GroupBy(l => l).Where(g => g.Count() > 1).Select(g => g.Key).ToList();
+      var letters = LetterCore.PickLetters(targetButtons.Count, excludeLetters);
 
       for (var i = 0; i < targetButtons.Count; i++)
       {
@@ -98,13 +99,19 @@ namespace Letters
         }
       }
 
-      var hasLetters = _buttons.Where(b => b.Letter.Value.HasValue).Select(b => b.Letter.Value.Value).ToList();
+      var hasLetters = TakeLetters(_buttons);
       var words = LetterCore.GetWords(hasLetters);
       BattleLogController.Instance?.PushMessage($"total {words.Count} words: {string.Join(", ", words.Take(30))}");
 
       var byLenth = words.GroupBy(w => w.Length).OrderBy(g=>g.Key);
       var stats = string.Join(", ", byLenth.Select(g => $"{g.Key}:{g.Count()}"));
       Debug.Log(stats);
+    }
+
+    private static List<char> TakeLetters(List<LetterButton> letterButtons)
+    {
+      var hasLetters = letterButtons.Where(b => b.Letter?.Value != null).Select(b => b.Letter.Value.Value).ToList();
+      return hasLetters;
     }
   }
 }

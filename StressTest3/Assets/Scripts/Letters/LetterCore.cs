@@ -31,13 +31,17 @@ namespace Letters
       return dat.text.Split('\n').Select(w => w.Trim().ToUpper()).ToList();
     }
 
-    public static List<char> PickLetters(int targetLetters)
+    public static List<char> PickLetters(int targetLetters, List<char> excludes)
     {
+      var filtered = new List<char>(BaseLetters);
+      foreach (var toExclude in excludes)
+        filtered.Remove(toExclude);
+      
       var res = new List<char>();
-      for (var index = 0; index < BaseLetters.Count && res.Count < targetLetters; index++)
+      for (var index = 0; index < filtered.Count && res.Count < targetLetters; index++)
       {
-        var letter = BaseLetters[index];
-        var chance = (index + 1d) / (BaseLetters.Count - targetLetters + res.Count);
+        var letter = filtered[index];
+        var chance = (index + 1d) / (filtered.Count - targetLetters + res.Count);
         if (_random.NextDouble() < chance)
         {
           res.Add(letter.ToString().ToUpper()[0]);
