@@ -1,0 +1,310 @@
+fileFormatVersion: 2
+guid: eefce9bd540043c4bad697d821e0b613
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Glaz_L
+    100002: Glaz_R
+    100004: Golova
+    100006: Golova 1
+    100008: Noga_L
+    100010: Noga_R
+    100012: Noga_R_0
+    100014: Noga_R_0 1
+    100016: Noga_R_1
+    100018: Noga_R_1 1
+    100020: Root
+    100022: Ruka_L
+    100024: Ruka_R
+    100026: Ruka_R_0
+    100028: Ruka_R_0 1
+    100030: Ruka_R_1
+    100032: Ruka_R_1 1
+    100034: Ruka_R_2
+    100036: Ruka_R_2 1
+    100038: Uho_L
+    100040: Uho_L_2
+    100042: Uho_R
+    100044: Uho_R_2
+    100046: Xvost
+    100048: //RootNode
+    100050: Zub_0
+    100052: Zub_1
+    100054: Zub_2
+    100056: Zub_3
+    100058: Zubu
+    400000: Glaz_L
+    400002: Glaz_R
+    400004: Golova
+    400006: Golova 1
+    400008: Noga_L
+    400010: Noga_R
+    400012: Noga_R_0
+    400014: Noga_R_0 1
+    400016: Noga_R_1
+    400018: Noga_R_1 1
+    400020: Root
+    400022: Ruka_L
+    400024: Ruka_R
+    400026: Ruka_R_0
+    400028: Ruka_R_0 1
+    400030: Ruka_R_1
+    400032: Ruka_R_1 1
+    400034: Ruka_R_2
+    400036: Ruka_R_2 1
+    400038: Uho_L
+    400040: Uho_L_2
+    400042: Uho_R
+    400044: Uho_R_2
+    400046: Xvost
+    400048: //RootNode
+    400050: Zub_0
+    400052: Zub_1
+    400054: Zub_2
+    400056: Zub_3
+    400058: Zubu
+    2100000: lambert1
+    2300000: Glaz_L
+    2300002: Glaz_R
+    2300004: Golova 1
+    2300006: Noga_R_0
+    2300008: Noga_R_0 1
+    2300010: Noga_R_1
+    2300012: Noga_R_1 1
+    2300014: Root
+    2300016: Ruka_R_0
+    2300018: Ruka_R_0 1
+    2300020: Ruka_R_1
+    2300022: Ruka_R_1 1
+    2300024: Ruka_R_2
+    2300026: Ruka_R_2 1
+    2300028: Uho_L
+    2300030: Uho_L_2
+    2300032: Uho_R
+    2300034: Uho_R_2
+    2300036: Xvost
+    2300038: Zub_0
+    2300040: Zub_1
+    2300042: Zub_2
+    2300044: Zub_3
+    3300000: Glaz_L
+    3300002: Glaz_R
+    3300004: Golova 1
+    3300006: Noga_R_0
+    3300008: Noga_R_0 1
+    3300010: Noga_R_1
+    3300012: Noga_R_1 1
+    3300014: Root
+    3300016: Ruka_R_0
+    3300018: Ruka_R_0 1
+    3300020: Ruka_R_1
+    3300022: Ruka_R_1 1
+    3300024: Ruka_R_2
+    3300026: Ruka_R_2 1
+    3300028: Uho_L
+    3300030: Uho_L_2
+    3300032: Uho_R
+    3300034: Uho_R_2
+    3300036: Xvost
+    3300038: Zub_0
+    3300040: Zub_1
+    3300042: Zub_2
+    3300044: Zub_3
+    4300000: Root
+    4300002: Xvost
+    4300004: Uho_L
+    4300006: Uho_L_2
+    4300008: Golova
+    4300010: Uho_R
+    4300012: Uho_R_2
+    4300014: Glaz_L
+    4300016: Glaz_R
+    4300018: Zub_0
+    4300020: Zub_1
+    4300022: Zub_2
+    4300024: Zub_3
+    4300026: Ruka_R_0
+    4300028: Ruka_R_1
+    4300030: Ruka_R_2
+    4300032: Ruka_R_0
+    4300034: Ruka_R_1
+    4300036: Ruka_R_2
+    4300038: Noga_R_0
+    4300040: Noga_R_1
+    4300042: Noga_R_0
+    4300044: Noga_R_1
+    7400000: Run
+    7400002: Attack
+    7400004: Take 001
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 31
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 51
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
