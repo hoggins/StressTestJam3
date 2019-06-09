@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e4035d6a074dcab3237c67ed6b6e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 30
+  Hp: 6
   ColorKind: 0
   SpawnKind: 0
   StopDistance: 3

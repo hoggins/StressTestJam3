@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e4035d6a074dcab3237c67ed6b6e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 30
+  Hp: 18
   ColorKind: 0
   SpawnKind: 0
   StopDistance: 3
@@ -178,4 +178,4 @@ MonoBehaviour:
   OrbPrefab: {fileID: 6988712625868721258, guid: f5b379210199f41f082bddef187a20e9,
     type: 3}
   OrbDamageMultiplier: 2
-  OrbDropChance: 0.15
+  Animator: {fileID: 0}
