@@ -29,6 +29,8 @@ namespace Controllers
 
       var power = GameBalance.SkillPower[skillKindId.Value].GetAtOrLast(wordLen);
 
+      BattleLogController.Instance?.PushMessage($"Cast {skillKindId} level {wordLen} power {power:0.##}");
+      
       switch (skillKindId)
       {
         case SkillKindId.Aoe:

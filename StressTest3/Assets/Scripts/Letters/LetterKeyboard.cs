@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Characters;
+using Controllers;
 using UnityEngine;
 
 namespace Letters
@@ -96,6 +97,10 @@ namespace Letters
           button.SetUsed(false);
         }
       }
+
+      var hasLetters = _buttons.Where(b => b.Letter.Value.HasValue).Select(b => b.Letter.Value.Value).ToList();
+      var words = LetterCore.GetWords(hasLetters);
+      BattleLogController.Instance?.PushMessage($"total {words.Count} words: {string.Join(", ", words.Take(30))}");
     }
   }
 }

@@ -110,6 +110,8 @@ namespace Characters
       if (GameController.Instance.ActiveOrb != EnemyColorKind.None && GameController.Instance.ActiveOrb != ColorKind)
         damage *= OrbDamageMultiplier;
 
+      BattleLogController.Instance?.PushMessage($"Hit {name} for {damage} damage");
+      
       Hp -= damage;
 
       if (Hp <= 0)

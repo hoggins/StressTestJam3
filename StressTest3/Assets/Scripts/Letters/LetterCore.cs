@@ -28,7 +28,7 @@ namespace Letters
     public static List<string> LoadDb()
     {
       var dat = (TextAsset) Resources.Load("db/zdb-win");
-      return dat.text.Split('\n').Select(w => w.Trim()).ToList();
+      return dat.text.Split('\n').Select(w => w.Trim().ToUpper()).ToList();
     }
 
     public static List<char> PickLetters(int targetLetters)
@@ -37,7 +37,7 @@ namespace Letters
       for (var index = 0; index < BaseLetters.Count && res.Count < targetLetters; index++)
       {
         var letter = BaseLetters[index];
-        var chance = (index + 1d) / (BaseLetters.Count - res.Count);
+        var chance = (index + 1d) / (BaseLetters.Count - targetLetters + res.Count);
         if (_random.NextDouble() < chance)
         {
           res.Add(letter.ToString().ToUpper()[0]);
@@ -51,6 +51,36 @@ namespace Letters
     {
       var isWord = _words.Any(w => string.Compare(w, letters, StringComparison.InvariantCultureIgnoreCase) == 0);
       return isWord ? letters.Length : 0;
+    }
+
+    public static List<string> GetWords(List<char> letters)
+    {
+      var hasByLetter = letters.GroupBy(l => l).ToDictionary(g => g.Key, g => g.Count());
+      var res = new List<string>();
+      var set = new HashSet<char>(letters);
+      var potentials = _words.Where(w => set.IsSupersetOf(w)).ToList();
+      foreach (var word in potentials)
+      {
+        if (HasEnoughDuplicates(word, hasByLetter))
+          res.Add(word);
+      }
+
+      return res;
+    }
+
+    private static bool HasEnoughDuplicates(string word, Dictionary<char, int> hasByLetter)
+    {
+      foreach (var letter in word)
+      {
+        var required = word.Count(wl => wl == letter);
+        if (required == 1)
+          continue;
+
+        if (!hasByLetter.TryGetValue(letter, out var has) || has < required)
+          return false;
+      }
+
+      return true;
     }
   }
 }

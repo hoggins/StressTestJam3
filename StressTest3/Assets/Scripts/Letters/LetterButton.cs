@@ -22,13 +22,20 @@ namespace Letters
       if (Letter.Value.HasValue)
         Text.text = Letter.Value.Value.ToString();
       else if (Letter.OrbColor.HasValue)
-        Image.color = Orb.GetColor(Letter.OrbColor.Value);
+      {
+        var color = Orb.GetColor(Letter.OrbColor.Value);
+        var buttonColors = Button.colors;
+        buttonColors.normalColor = color;
+        Button.colors = buttonColors;
+      }
     }
 
     private void Reset()
     {
       Text.text = String.Empty;
-      Image.color = Color.white;
+      var buttonColors = Button.colors;
+      buttonColors.normalColor = Color.white;
+      Button.colors = buttonColors;
     }
 
     public void LetterClick()
