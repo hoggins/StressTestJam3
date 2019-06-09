@@ -20,6 +20,10 @@ ModelImporter:
     100028: ruka_R
     100030: wlyapa
     100032: xvost
+    100034: NLO
+    100036: pCylinder10
+    100038: pCylinder11
+    100040: pPlane2
     400000: //RootNode
     400002: golova
     400004: gun
@@ -37,7 +41,12 @@ ModelImporter:
     400028: ruka_R
     400030: wlyapa
     400032: xvost
+    400034: NLO
+    400036: pCylinder10
+    400038: pCylinder11
+    400040: pPlane2
     2100000: LisTexture
+    2100002: lambert1
     2300000: //RootNode
     2300002: golova
     2300004: gun
@@ -55,6 +64,9 @@ ModelImporter:
     2300028: ruka_R
     2300030: wlyapa
     2300032: xvost
+    2300034: pCylinder10
+    2300036: pCylinder11
+    2300038: pPlane2
     3300000: //RootNode
     3300002: golova
     3300004: gun
@@ -72,6 +84,9 @@ ModelImporter:
     3300028: ruka_R
     3300030: wlyapa
     3300032: xvost
+    3300034: pCylinder10
+    3300036: pCylinder11
+    3300038: pPlane2
     4300000: Fox
     4300002: golova
     4300004: wlyapa
@@ -89,6 +104,9 @@ ModelImporter:
     4300028: gun
     4300030: noga_R
     4300032: noga_L
+    4300034: pPlane2
+    4300036: pCylinder10
+    4300038: pCylinder11
     7400000: Attack_0
     7400002: Attack_1
     7400004: RandomIdle
