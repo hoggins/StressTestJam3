@@ -28,7 +28,8 @@ namespace Controllers
       {
         var buttonColors = btn.colors;
         buttonColors.disabledColor = buttonColors.normalColor;
-        buttonColors.pressedColor = buttonColors.normalColor;
+//        buttonColors.pressedColor = buttonColors.normalColor;
+        buttonColors.highlightedColor =  buttonColors.normalColor;
         btn.colors = buttonColors;
       }
 
