@@ -4,6 +4,7 @@ using System.Linq;
 using Characters;
 using Controllers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Letters
 {
@@ -23,9 +24,29 @@ namespace Letters
 
     public void SetOrbEffect(KeyboardEffectKindId effect)
     {
+      if (effect == KeyboardEffectKindId.Shuffle)
+      {
+        DoShaffleLetters();
+        return;
+      }
+      
       foreach (var button in _buttons.Where(b=>b.Letter.OrbColor == null))
       {
         button.SetEffect(effect);
+      }
+    }
+
+    private void DoShaffleLetters()
+    {
+      var letters = _buttons.Where(b => !b.IsUsed).Select(b => b.Letter).ToList();
+      letters = letters.OrderBy(l=>Random.value).ToList();
+
+      var nextUse = 0;
+      foreach (var button in _buttons)
+      {
+        if (button.IsUsed)
+          continue;
+        button.SetLetter(letters[nextUse++], true);
       }
     }
 
