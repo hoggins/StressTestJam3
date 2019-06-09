@@ -17,6 +17,7 @@ namespace Characters
     public GameObject BulletPrefab;
     public Animator Animator;
     public GameObject AoePrefab;
+    public GameObject MeleePrefab;
 
     private float _speed = 0f;
 
@@ -133,6 +134,7 @@ namespace Characters
         }
       }
 
+      Instantiate(MeleePrefab, transform.position, Quaternion.identity, transform);
       AudioController.Instance.PlayHeroMelee();
       CameraController.Instance.Shaker.ShakeOnce(2.25f+ enemiesCount/4f, 2f, 0f, 0.65f + enemiesCount/ 5f, new Vector3(), new Vector3(1,1,1));
     }

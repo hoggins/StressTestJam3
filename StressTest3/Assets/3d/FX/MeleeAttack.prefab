@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4252909533192502277}
   - component: {fileID: 4252909533193502405}
   - component: {fileID: 7959349414053002366}
+  - component: {fileID: 6067125938393389688}
   m_Layer: 0
   m_Name: MeleeAttack
   m_TagString: Untagged
@@ -98,6 +99,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6067125938393389688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252909533195427845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fd1386af9492a8b2e450e5a37a175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seconds: 10
 --- !u!1 &6417071893085699527
 GameObject:
   m_ObjectHideFlags: 0

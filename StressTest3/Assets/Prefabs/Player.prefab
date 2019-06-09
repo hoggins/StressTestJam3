@@ -256,6 +256,8 @@ MonoBehaviour:
   Animator: {fileID: 6941120705784134822}
   AoePrefab: {fileID: 4847753379919737253, guid: 3572243f1847af04780074ae95a2b1ea,
     type: 3}
+  MeleePrefab: {fileID: 4252909533195427845, guid: 0b9d2be2202666142969ac9cafbf2e63,
+    type: 3}
   Damage: 1
   MeleeDamage: 10
   MeleeRadius: 4
