@@ -41,6 +41,13 @@ namespace Characters
 
     private void Update()
     {
+      if (Hp <= 0f)
+      {
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-90, 0, 0), Time.deltaTime*5f);
+        Animator.speed = Mathf.Lerp(Animator.speed, 0, Time.deltaTime);
+        return;
+      }
+
       var closestEnemy = GetClosestEnemy(out var distance);
 
       if (closestEnemy != null)
