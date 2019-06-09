@@ -23,6 +23,10 @@ namespace Letters
     public Button Button;
     public Image Image;
 
+    public Sprite Green;
+    public Sprite Blue;
+    public Sprite Red;
+
     public void SetLetter(Letter letter, bool onlyText = false)
     {
       if (!onlyText)
@@ -32,13 +36,16 @@ namespace Letters
       if (Letter.Value.HasValue)
       {
         Text.text = Letter.Value.Value.ToString();
+        Image.enabled = false;
         SetLocked(false);
       }
       else if (Letter.OrbColor.HasValue)
       {
         Text.text = String.Empty;
-        var color = Orb.GetColor(Letter.OrbColor.Value);
-        SetColor(color);
+        Image.enabled = true;
+        SetSprite(Letter.OrbColor.Value);
+//        var color = Orb.GetColor(Letter.OrbColor.Value);
+//        SetColor(color);
       }
     }
 
@@ -96,6 +103,24 @@ namespace Letters
       
       var fx = gameObject.AddComponent<LetterButtonEffect>();
       fx.Setup(effect, time);
+    }
+
+    private void SetSprite(EnemyColorKind orbColor)
+    {
+      switch (orbColor)
+      {
+        case EnemyColorKind.Red:
+          Image.sprite = Red;
+          break;
+        case EnemyColorKind.Green:
+          Image.sprite = Green;
+          break;
+        case EnemyColorKind.Blue:
+          Image.sprite = Blue;
+          break;
+        default:
+          throw new ArgumentOutOfRangeException(nameof(orbColor), orbColor, null);
+      }
     }
   }
 }
