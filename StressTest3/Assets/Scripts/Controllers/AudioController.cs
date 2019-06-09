@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Controllers
 {
@@ -22,18 +23,20 @@ namespace Controllers
     public AudioClip DeathSmall;
     public AudioClip DeathHero;
     public AudioClip HeroHit;
-    
+
+    public AudioClip[] RandomPhrases;
+
     public AudioSource Common;
     public AudioSource Music;
     public AudioSource MusicMenu;
-    
+
     public static AudioController Instance;
-    
+
     private void Awake()
     {
       if (Instance != null)
       {
-        Destroy(gameObject); 
+        Destroy(gameObject);
         return;
       }
 
@@ -45,17 +48,17 @@ namespace Controllers
     {
       Common.PlayOneShot(Shoot);
     }
-    
+
     public void PlayDeathSmall()
     {
       Common.PlayOneShot(DeathSmall);
     }
-    
+
     public void PlayDeathBig()
     {
       Common.PlayOneShot(DeathBig);
     }
-     
+
     public void PlayDeathHero()
     {
       Common.PlayOneShot(DeathHero);
@@ -73,14 +76,14 @@ namespace Controllers
          private bool _isPlayingMenuMusic;
     public void PlayMusic()
     {
-      
-      
+
+
       Music.Play();
       Music.volume = 0f;
-      
+
       if(_musicCoroutine != null)
         StopCoroutine(_musicCoroutine);
-      
+
       _musicCoroutine = StartCoroutine(ChangeVolumeTo(Music, 1f, 3f));
     }
     public void StopMusic()
@@ -95,7 +98,7 @@ namespace Controllers
       if (_isPlayingMenuMusic)
         return;
       _isPlayingMenuMusic = true;
-      
+
       MusicMenu.Play();
       MusicMenu.volume = 0f;
       if(_musicMenuCoroutine != null)
@@ -107,53 +110,56 @@ namespace Controllers
       if (!_isPlayingMenuMusic)
         return;
       _isPlayingMenuMusic = false;
-      
+
       if(_musicMenuCoroutine != null)
         StopCoroutine(_musicMenuCoroutine);
       _musicMenuCoroutine = StartCoroutine(ChangeVolumeTo(MusicMenu, 0f, 0.3f));
-    }   
-    
+    }
+
     public void PlayFreeze()
     {
       Common.PlayOneShot(Freeze);
     }
-    
-    
+
+
     public void PlayHeal()
     {
       Common.PlayOneShot(Heal);
     }
-    
-    
+
+
     public void PlayMultishot()
     {
       Common.PlayOneShot(MultiShot);
     }
-    
-    
+
+
     public void PlayOrbRed()
     {
       Common.PlayOneShot(RedOrb);
     }
-     
+
     public void PlayOrbGreen()
     {
       Common.PlayOneShot(GreenOrb);
     }
-     
+
     public void PlayOrbBlue()
     {
       Common.PlayOneShot(BlueOrb);
     }
-    
-    
+
+
     public void PlayOrbPickup()
     {
       Common.PlayOneShot(OrbPickup);
     }
-    
 
-
+    public void PlayPhrase()
+    {
+      var phrase = RandomPhrases[UnityEngine.Random.Range(0, RandomPhrases.Length)];
+      Common.PlayOneShot(phrase);
+    }
 
     private IEnumerator ChangeVolumeTo(AudioSource source, float to, float duration = 1f)
     {
@@ -165,7 +171,7 @@ namespace Controllers
         source.volume = Mathf.Lerp(from, to, t/duration);
         yield return null;
       }
-      
+
       if(source.volume == 0)
         source.Stop();
     }

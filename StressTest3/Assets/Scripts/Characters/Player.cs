@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using Controllers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Characters
 {
@@ -24,6 +26,15 @@ namespace Characters
     {
       Instance = this;
       Hp = MaxHp;
+    }
+
+    IEnumerator Start()
+    {
+      while (true)
+      {
+        yield return new WaitForSeconds(Random.Range(15, 30));
+        AudioController.Instance.PlayPhrase();
+      }
     }
 
     private void Update()
