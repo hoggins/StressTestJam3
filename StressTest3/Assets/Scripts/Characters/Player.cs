@@ -16,6 +16,7 @@ namespace Characters
     public Transform[] FirePoints;
     public GameObject BulletPrefab;
     public Animator Animator;
+    public GameObject AoePrefab;
 
     private float _speed = 0f;
 
@@ -84,6 +85,8 @@ namespace Characters
 
       if (Enemy.Enemies.Count > 0)
       {
+        var closestTarget = GetClosestEnemy(out var d);
+        Instantiate(AoePrefab, closestTarget.transform.position, Quaternion.identity);
         AudioController.Instance.PlayMultishot();
         CameraController.Instance.Shaker.ShakeOnce(1.85f + Enemy.Enemies.Count / 4f, 2f, 0f,
           0.45f + Enemy.Enemies.Count / 5f, new Vector3(), new Vector3(1, 1, 1));

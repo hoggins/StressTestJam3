@@ -3180,7 +3180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f7211448f04984a19e105082bc2fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MessagesLimit: 5
   Text: {fileID: 225394182}
 --- !u!222 &1700034176
 CanvasRenderer:
