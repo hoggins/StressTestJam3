@@ -40,7 +40,10 @@ namespace Characters
       else
         _speed = Mathf.Lerp(_speed, 0f, Time.deltaTime);
 
-      transform.position += new Vector3(0, 0, Time.deltaTime*_speed);
+
+      var passedDist = Time.deltaTime*_speed;
+      ScoreController.Instance.TrackWalk(passedDist);
+      transform.position += new Vector3(0, 0, passedDist);
     }
 
     public void ShootClosestEnemy(int strength)

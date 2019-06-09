@@ -29,6 +29,11 @@ namespace Controllers
       var lettrs = obj.Select(l => l.Value.Value);
       var word = new string(lettrs.ToArray());
       var len = LetterCore.GetWordLength(word);
+      if (len > 0)
+        ScoreController.Instance.TrackWord(word);
+      else
+        ScoreController.Instance.TrackWastedLetters(word);
+      
       SkillController.CastSkill(len);
     }
   }
