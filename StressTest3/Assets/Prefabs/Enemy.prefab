@@ -377,6 +377,12 @@ MonoBehaviour:
     type: 3}
   OrbDamageMultiplier: 2
   Animator: {fileID: 1309173789506743277}
+  DeathRedFx: {fileID: 3908968221174900548, guid: 1482341274b8e684ca1f893ff7443523,
+    type: 3}
+  DeathGreenFx: {fileID: 1126677850208348847, guid: 71276ea32c0644d4e998d96e3e1d2d40,
+    type: 3}
+  DeathBlueFx: {fileID: 884034620402895977, guid: a2d4637442ece684c8fc4b1e038c5883,
+    type: 3}
   _bossPhases: []
   _currentPhase:
     LettersCount: 0

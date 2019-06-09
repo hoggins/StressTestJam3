@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Controllers;
@@ -48,7 +49,9 @@ namespace Characters
     public float OrbDamageMultiplier = 2;
 
     public Animator Animator;
-
+    public GameObject DeathRedFx;
+    public GameObject DeathGreenFx;
+    public GameObject DeathBlueFx;
 
 
     private float _freezeDuration;
@@ -152,7 +155,7 @@ namespace Characters
           _currentBossPhase++;
           if (_currentBossPhase >= _bossPhases.Count)
           {
-            DoDie();
+            StartCoroutine(DoDie());
           }
           else
           {
@@ -164,6 +167,9 @@ namespace Characters
 
     public void TakeDamage(float damage)
     {
+      if(Hp <= 0)
+        return;
+
       if (GameController.Instance.ActiveOrb != EnemyColorKind.None && GameController.Instance.ActiveOrb != ColorKind)
         damage *= OrbDamageMultiplier;
 
@@ -175,11 +181,11 @@ namespace Characters
 
       if (Hp <= 0)
       {
-        DoDie();
+        StartCoroutine(DoDie());
       }
     }
 
-    private void DoDie()
+    private IEnumerator DoDie()
     {
       if (Random.value <= GameBalance.OrbDropChance)
       {
@@ -198,6 +204,23 @@ namespace Characters
           break;
       }
 
+      GameObject deathFx = DeathRedFx;
+      switch (ColorKind)
+      {
+        case EnemyColorKind.Red:
+          deathFx = DeathRedFx;
+          break;
+        case EnemyColorKind.Green:
+          deathFx = DeathGreenFx;
+          break;
+        case EnemyColorKind.Blue:
+          deathFx = DeathBlueFx;
+          break;
+      }
+
+      Instantiate(deathFx, transform.position, Quaternion.identity);
+
+      yield return new WaitForSeconds(0.5f);
       Destroy(gameObject);
     }
 
