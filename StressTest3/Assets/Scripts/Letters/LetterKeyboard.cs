@@ -101,6 +101,10 @@ namespace Letters
       var hasLetters = _buttons.Where(b => b.Letter.Value.HasValue).Select(b => b.Letter.Value.Value).ToList();
       var words = LetterCore.GetWords(hasLetters);
       BattleLogController.Instance?.PushMessage($"total {words.Count} words: {string.Join(", ", words.Take(30))}");
+
+      var byLenth = words.GroupBy(w => w.Length).OrderBy(g=>g.Key);
+      var stats = string.Join(", ", byLenth.Select(g => $"{g.Key}:{g.Count()}"));
+      Debug.Log(stats);
     }
   }
 }

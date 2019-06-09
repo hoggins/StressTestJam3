@@ -33,5 +33,10 @@ namespace Controllers
     {
       Instance = null;
     }
+
+    public void ToggleText()
+    {
+      Text.gameObject.SetActive(!Text.gameObject.activeSelf);
+    }
   }
 }
