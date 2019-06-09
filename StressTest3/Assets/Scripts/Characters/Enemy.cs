@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Controllers;
 using Model;
 using UnityEngine;
@@ -51,6 +52,7 @@ namespace Characters
     private void OnEnable()
     {
       Enemies.Add(this);
+      _currentPhase = _bossPhases.FirstOrDefault();
     }
 
     private void OnDisable()
@@ -66,9 +68,10 @@ namespace Characters
         var direction = -(transform.position - Player.Instance.transform.position).normalized;
 
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        _speedMod = Mathf.Lerp(_speedMod, 1f, Time.deltaTime * 2f);
 
-        if (distance > StopDistance)
-          transform.position += Preset.Speed * Time.deltaTime * direction;
+        if (distance > StopDistance || _speedMod < 0)
+          transform.position += Preset.Speed * Time.deltaTime * direction*_speedMod;
         else
         {
           DealDamageToPlayer();
@@ -110,6 +113,46 @@ namespace Characters
       Player.Instance.TakeDamage(Preset.Damage);
     }
 
+
+
+    [Serializable]
+    public class BossPhase
+    {
+      public int LettersCount;
+      public int HitsCount;
+    }
+
+    [Header("Boss")] public List<BossPhase> _bossPhases;
+
+    public BossPhase _currentPhase;
+    public int _currentBossPhase;
+    public int BossDamageTakenTimes;
+
+    private float _speedMod = 1f;
+
+    public void TryTakeBossDamage(int lettersCount)
+    {
+      if (lettersCount >= _currentPhase.LettersCount)
+      {
+
+        _speedMod = -60f;
+
+        BossDamageTakenTimes++;
+        if (BossDamageTakenTimes > _currentPhase.HitsCount)
+        {
+          _currentBossPhase++;
+          if (_currentBossPhase >= _bossPhases.Count)
+          {
+            DoDie();
+          }
+          else
+          {
+            _currentPhase = _bossPhases[_currentBossPhase];
+          }
+        }
+      }
+    }
+
     public void TakeDamage(float damage)
     {
       if (GameController.Instance.ActiveOrb != EnemyColorKind.None && GameController.Instance.ActiveOrb != ColorKind)
@@ -123,24 +166,30 @@ namespace Characters
 
       if (Hp <= 0)
       {
-        if (Random.value <= GameBalance.OrbDropChance)
-        {
-          var go = GameObject.Instantiate(OrbPrefab);
-          go.transform.position = transform.position;
-        }
-
-        switch (SpawnKind)
-        {
-          case GameController.SpawnKind.Small:
-            AudioController.Instance.PlayDeathSmall();
-            break;
-          case GameController.SpawnKind.Big:
-            AudioController.Instance.PlayDeathBig();
-            break;
-        }
-
-        Destroy(gameObject);
+        DoDie();
       }
+    }
+
+    private void DoDie()
+    {
+      if (Random.value <= GameBalance.OrbDropChance)
+      {
+        var go = GameObject.Instantiate(OrbPrefab);
+        go.transform.position = transform.position;
+      }
+
+      switch (SpawnKind)
+      {
+        case GameController.SpawnKind.Small:
+          AudioController.Instance.PlayDeathSmall();
+          break;
+        case GameController.SpawnKind.Big:
+        case GameController.SpawnKind.Boss:
+          AudioController.Instance.PlayDeathBig();
+          break;
+      }
+
+      Destroy(gameObject);
     }
 
     public void SetKind(GameController.SpawnKind kind, EnemyColorKind colorKind)

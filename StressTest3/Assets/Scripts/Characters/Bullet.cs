@@ -7,13 +7,15 @@ namespace Characters
   {
     public Rigidbody Rigidbody;
     public float Damage;
+    public int BossDamage;
 
     public bool IsDestroyed;
 
-    public void Init(Vector3 direction, float speed, float damage)
+    public void Init(Vector3 direction, float speed, float damage, int bossDamage)
     {
       Rigidbody.velocity = direction * speed;
       Damage = damage;
+      BossDamage = bossDamage;
       transform.rotation = Quaternion.LookRotation(direction);
     }
 
@@ -26,6 +28,8 @@ namespace Characters
       {
         var enemy = other.gameObject.GetComponent<Enemy>();
         enemy.TakeDamage(Damage);
+        if(BossDamage > 1)
+          enemy.TryTakeBossDamage(BossDamage);
 
         //todo: fx
         IsDestroyed = true;

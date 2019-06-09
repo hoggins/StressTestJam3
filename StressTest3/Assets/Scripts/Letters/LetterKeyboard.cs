@@ -12,7 +12,7 @@ namespace Letters
   public class LetterKeyboard : MonoBehaviour
   {
     public static LetterKeyboard Instance { get; private set; }
-    
+
     public GameObject ButtonRoot;
     public GameObject LetterRoot;
     private List<LetterButton> _buttons;
@@ -64,7 +64,7 @@ namespace Letters
       _buttons = ButtonRoot.GetComponentsInChildren<LetterButton>().ToList();
       _letters = new LetterController(LetterRoot.GetComponentsInChildren<LetterCell>().ToList());
       _letters.Reset();
-      
+
       foreach (var button in _buttons)
       {
         button.OnLetter += ButtonOnLetter;
@@ -131,6 +131,29 @@ namespace Letters
       Orb,
     }
 
+    private void Update()
+    {
+      var boss = Enemy.Enemies.Find(b => b.SpawnKind == GameController.SpawnKind.Boss);
+      if (boss != null)
+      {
+        var childrenCount = LetterRoot.transform.childCount;
+        for (int i = 0; i < childrenCount; i++)
+        {
+          var child = LetterRoot.transform.GetChild(i);
+          child.gameObject.SetActive(i < boss._currentPhase.LettersCount);
+        }
+      }
+      else
+      {
+        var childrenCount = LetterRoot.transform.childCount;
+        for (int i = 0; i < childrenCount; i++)
+        {
+          var child = LetterRoot.transform.GetChild(i);
+          child.gameObject.SetActive(true);
+        }
+      }
+    }
+
     private void RechargeButtons(RechargeMode mode)
     {
       List<LetterButton> targetButtons;
@@ -162,7 +185,7 @@ namespace Letters
           button.SetUsed(false);
         }
       }
-      
+
       SetButtonsLocked(false);
 
 

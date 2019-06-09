@@ -59,22 +59,27 @@ namespace Characters
       transform.position += new Vector3(0, 0, passedDist);
     }
 
-    public void ShootClosestEnemy(int strength)
+    public void ShootClosestEnemy(int strength, int lettersCount = 1)
     {
       var closestEnemy = GetClosestEnemy(out var distance);
       if (closestEnemy != null)
       {
         AudioController.Instance.PlayShoot();
         CameraController.Instance.Shaker.ShakeOnce(1.85f, 2f, 0f, 0.45f, new Vector3(), new Vector3(1,1,1));
-        ShootEnemy(strength, closestEnemy);
+        ShootEnemy(strength, closestEnemy, lettersCount);
       }
+    }
+
+    public void ShootBoss(int lettersCount)
+    {
+      ShootClosestEnemy(1, lettersCount);
     }
 
     public void ShootAll(float strength)
     {
       foreach (var enemy in Enemy.Enemies)
       {
-        ShootEnemy(strength, enemy);
+        ShootEnemy(strength, enemy, 1);
       }
 
       if (Enemy.Enemies.Count > 0)
@@ -129,7 +134,7 @@ namespace Characters
     }
 
     private int _currentFirePoint = 0;
-    private void ShootEnemy(float strength, Enemy closestEnemy)
+    private void ShootEnemy(float strength, Enemy closestEnemy, int letterCount)
     {
       var go = GameObject.Instantiate(BulletPrefab);
 
@@ -152,7 +157,7 @@ namespace Characters
       go.transform.rotation = Quaternion.LookRotation(direction);
 
       var damage = strength * Damage;
-      bullet.Init(direction, 60, damage);
+      bullet.Init(direction, 60, damage, letterCount);
     }
 
     private Enemy GetClosestEnemy(out float minDistance)

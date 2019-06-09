@@ -5,8 +5,9 @@ namespace Letters
 {
   public class LetterController
   {
-    public bool IsComplete => _nextCell == _letters.Count;
-    
+    public bool IsComplete => _nextCell == _letters.Count(l => l.gameObject.activeSelf);
+    public static LetterController Instance;
+
     private List<LetterCell> _letters;
 
     private int _nextCell;
@@ -14,6 +15,7 @@ namespace Letters
     public LetterController(List<LetterCell> letters)
     {
       _letters = letters.OrderBy(l=>l.Index).ToList();
+      Instance = this;
     }
 
     public void InputNext(Letter letter)
