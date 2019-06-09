@@ -24,20 +24,19 @@ namespace Model
       [SkillKindId.Heal] = new List<double>{0,0,0,0.2,0.4,0.6,0.8,1},
       
     };
-    
+
     // index is word length
     public static List<SkillKindId?> SkillLayout = new List<SkillKindId?>
     {
       null,
       null,
       null,
-      SkillKindId.Aoe,
       SkillKindId.Freeze,
+      SkillKindId.Aoe,
       SkillKindId.Heal,
       SkillKindId.Aoe,
       SkillKindId.Aoe,
       SkillKindId.Aoe,
     };
-    
   }
 }
