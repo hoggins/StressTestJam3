@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7573223267177158709}
   - component: {fileID: 289181326029824745}
   - component: {fileID: 8279474732706622590}
+  - component: {fileID: 2296497110709381334}
   m_Layer: 0
-  m_Name: AOEThunderFX
+  m_Name: AOEThunderFXBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4719,6 +4720,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2296497110709381334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441709098099303975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fd1386af9492a8b2e450e5a37a175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seconds: 5
 --- !u!1 &7305314324536229137
 GameObject:
   m_ObjectHideFlags: 0
