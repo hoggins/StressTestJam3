@@ -2744,12 +2744,12 @@ MonoBehaviour:
   DifficultyRising: 0.65
   MaxSpawnRising: 0.15
   Presets:
-  - Hp: 30
+  - Hp: 6
     Speed: 2
     Damage: 5
     AttackCooldown: 1
     Kind: 0
-  - Hp: 100
+  - Hp: 18
     Speed: 0.5
     Damage: 30
     AttackCooldown: 2
@@ -3506,6 +3506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918320824718164094, guid: b76027506a9d849d49c53ce73a5b972d,
+        type: 3}
+      propertyPath: Damage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b76027506a9d849d49c53ce73a5b972d, type: 3}
