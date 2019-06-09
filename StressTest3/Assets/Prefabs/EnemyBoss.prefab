@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e4035d6a074dcab3237c67ed6b6e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 18
+  Hp: 180000
   ColorKind: 0
   SpawnKind: 0
   StopDistance: 3
@@ -207,6 +207,9 @@ MonoBehaviour:
   RedTexture: {fileID: 2800000, guid: 97a838c11f8ec4b69840403ac93472d1, type: 3}
   GreenTexture: {fileID: 2800000, guid: f1707cbfe01b64a0095c39828cdfff4f, type: 3}
   BlueTexture: {fileID: 2800000, guid: 79edf1b53972f4e378fb1ed9d0d5d315, type: 3}
+  RedEffect: {fileID: 0}
+  GreenEffect: {fileID: 0}
+  BlueEffect: {fileID: 0}
   OrbPrefab: {fileID: 6988712625868721258, guid: f5b379210199f41f082bddef187a20e9,
     type: 3}
   OrbDamageMultiplier: 2
@@ -248,6 +251,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 332aaed38d87d1744a650522429f9056, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 332aaed38d87d1744a650522429f9056, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -275,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 100020, guid: 332aaed38d87d1744a650522429f9056, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 332aaed38d87d1744a650522429f9056, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100022, guid: 332aaed38d87d1744a650522429f9056, type: 3}
       propertyPath: m_Layer
