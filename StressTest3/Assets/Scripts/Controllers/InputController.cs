@@ -19,7 +19,10 @@ namespace Controllers
     private void OnLetter(Letter letter)
     {
       if (letter.OrbColor.HasValue)
+      {
         GameController.Instance.UseOrb(letter.OrbColor.Value);
+        LetterKeyboard.Instance.SetOrbEffect(Orb.GetEffect(letter.OrbColor.Value));
+      }
       else
         Player.Instance.ShootClosestEnemy(1);
     }

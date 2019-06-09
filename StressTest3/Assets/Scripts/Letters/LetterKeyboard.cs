@@ -21,6 +21,22 @@ namespace Letters
     public Action<List<Letter>> OnSubmit;
     public Action OnMelee;
 
+    public void SetOrbEffect(KeyboardEffectKindId effect)
+    {
+      foreach (var button in _buttons.Where(b=>b.Letter.OrbColor == null))
+      {
+        button.SetEffect(effect);
+      }
+    }
+
+    public void PushOrb(EnemyColorKind kind)
+    {
+      var freeBtn = _buttons.FirstOrDefault(b => !b.IsUsed && !b.Letter.OrbColor.HasValue);
+      if (freeBtn == null)
+        return;
+      freeBtn.SetLetter(new Letter(kind));
+    }
+
     private void Awake()
     {
       Instance = this;
@@ -42,14 +58,6 @@ namespace Letters
     private void Start()
     {
       RechargeButtons(RechargeMode.All);
-    }
-
-    public void PushOrb(EnemyColorKind kind)
-    {
-      var freeBtn = _buttons.FirstOrDefault(b => !b.IsUsed && !b.Letter.OrbColor.HasValue);
-      if (freeBtn == null)
-        return;
-      freeBtn.SetLetter(new Letter(kind));
     }
 
     public void Submit()

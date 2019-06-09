@@ -68,5 +68,20 @@ namespace Characters
           throw new ArgumentOutOfRangeException(nameof(kind), kind, null);
       }
     }
+
+    public static KeyboardEffectKindId GetEffect(EnemyColorKind color)
+    {
+      switch (color)
+      {
+        case EnemyColorKind.Red:
+          return KeyboardEffectKindId.Shuffle;
+        case EnemyColorKind.Green:
+          return KeyboardEffectKindId.Blur;
+        case EnemyColorKind.Blue:
+          return KeyboardEffectKindId.Flip;
+        default:
+          throw new ArgumentOutOfRangeException(nameof(color), color, null);
+      }
+    }
   }
 }

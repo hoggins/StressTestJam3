@@ -1,5 +1,6 @@
 using System;
 using Controllers;
+using Letters;
 using UnityEngine;
 
 namespace Characters
@@ -21,7 +22,10 @@ namespace Characters
         Player.Instance.MeleeAttack();
 
       if (Input.GetKeyDown(KeyCode.Q))
+      {
         GameController.Instance.UseOrb(EnemyColorKind.Red);
+        LetterKeyboard.Instance.SetOrbEffect(KeyboardEffectKindId.Blur);
+      }
       else if (Input.GetKeyDown(KeyCode.W))
         GameController.Instance.UseOrb(EnemyColorKind.Green);
       else if (Input.GetKeyDown(KeyCode.E))
