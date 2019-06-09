@@ -42,6 +42,7 @@ namespace Letters
     private void Start()
     {
       RechargeButtons(RechargeMode.All);
+      SetButtonsLocked(true);
     }
 
     public void PushOrb(EnemyColorKind kind)
@@ -82,6 +83,17 @@ namespace Letters
       sender.SetUsed(true);
       _letters.InputNext(letter);
       OnLetter?.Invoke(letter);
+
+      if (_letters.IsComplete)
+        SetButtonsLocked(true);
+    }
+
+    private void SetButtonsLocked(bool isLocked)
+    {
+      foreach (var button in _buttons.Where(b=>b.Letter.OrbColor == null))
+      {
+        button.SetLocked(isLocked);
+      }
     }
 
     enum RechargeMode
@@ -122,6 +134,8 @@ namespace Letters
           button.SetUsed(false);
         }
       }
+      
+      SetButtonsLocked(false);
 
       var hasLetters = TakeLetters(_buttons);
       var words = LetterCore.GetWords(hasLetters);
