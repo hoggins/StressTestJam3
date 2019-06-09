@@ -165,7 +165,7 @@ namespace Controllers
 
       foreach (var enemy in Enemy.Enemies.ToList())
       {
-        if (enemy.ColorKind != kind)
+        if (enemy.ColorKind != kind && enemy.SpawnKind != SpawnKind.Big)
           Destroy(enemy.gameObject);
         else
         {
