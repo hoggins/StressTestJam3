@@ -23,6 +23,13 @@ namespace Controllers
 
     public static void CastSkill(int wordLen)
     {
+      if (Enemy.Enemies.Any(e => e.SpawnKind == GameController.SpawnKind.Boss))
+      {
+        var boss = Enemy.Enemies.Find(b => b.SpawnKind == GameController.SpawnKind.Boss);
+        boss.TryTakeBossDamage(wordLen);
+        return;
+      }
+
       var skillKindId = GameBalance.SkillLayout.GetAtOrLast(wordLen);
       if (!skillKindId.HasValue)
         return;
@@ -30,7 +37,7 @@ namespace Controllers
       var power = GameBalance.SkillPower[skillKindId.Value].GetAtOrLast(wordLen);
 
       BattleLogController.Instance?.PushMessage($"Cast {skillKindId} level {wordLen} power {power:0.##}");
-      
+
       switch (skillKindId)
       {
         case SkillKindId.Aoe:
@@ -57,5 +64,5 @@ namespace Controllers
       return list[idx];
     }
   }
-  
+
 }

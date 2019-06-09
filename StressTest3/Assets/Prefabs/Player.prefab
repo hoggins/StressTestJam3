@@ -254,7 +254,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 6460764001017385550, guid: f03067df69e3844c189c0bbef4ffda9a,
     type: 3}
   Animator: {fileID: 6941120705784134822}
-  Damage: 10
+  Damage: 1
   MeleeDamage: 10
   MeleeRadius: 4
 --- !u!114 &3674686540049783227

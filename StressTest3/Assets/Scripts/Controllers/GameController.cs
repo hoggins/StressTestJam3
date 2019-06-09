@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Characters;
+using Letters;
+using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +16,7 @@ namespace Controllers
 
     public GameObject EnemyPrefab;
     public GameObject BigEnemyPrefab;
+    public GameObject BossPrefab;
 
     public float SpawnDistanceMin = 30;
     public float SpawnDistanceMax = 40;
@@ -39,10 +42,14 @@ namespace Controllers
 
     public List<Enemy.EnemyPreset> Presets;
 
+    public int BossSpawnWave = 15;
+    public int CurrentWave = 0;
+
     public enum SpawnKind
     {
       Small,
-      Big
+      Big,
+      Boss
     }
 
     public Dictionary<SpawnKind, float> SpawnCosts = new Dictionary<SpawnKind, float>()
@@ -59,6 +66,7 @@ namespace Controllers
     {
       Instance = this;
       ActiveOrb = EnemyColorKind.None;
+      CurrentWave = 1;
     }
 
     private void Start()
@@ -95,7 +103,25 @@ namespace Controllers
       _spawnCoroutineStarted = true;
       CurrentWaveDifficultyLeft = SpawnDifficulty;
 
+      if (CurrentWave % BossSpawnWave == 0)
+      {
+        BattleHud.Instance.Boss();
+        LetterController.Instance.Reset();
+      }
+
       yield return new WaitForSeconds(Random.Range(TimeToWalkMin, TimeToWalkMax));
+
+      if (CurrentWave % BossSpawnWave == 0)
+      {
+        _isSpawnInProgres = false;
+        _spawnCoroutineStarted = false;
+
+        Spawn(SpawnKind.Boss);
+
+      CurrentWave++;
+        yield break;
+      }
+
       _isSpawnInProgres = true;
 
       while (CurrentWaveDifficultyLeft > 0)
@@ -107,6 +133,7 @@ namespace Controllers
           yield return new WaitForSeconds(Random.Range(TimeBetweenSpawnsMin, TimeBetweenSpawnsMax));
       }
 
+      CurrentWave++;
       _isSpawnInProgres = false;
       _spawnCoroutineStarted = false;
     }
@@ -115,6 +142,9 @@ namespace Controllers
 
     private bool SpawnNextGroup(bool canSpawn)
     {
+
+
+
       var spawned = false;
       var waveSpawnAmount = Random.Range(1f, MaxSpawnPerWave);
       var groupDifficulty = Mathf.Min(CurrentWaveDifficultyLeft, waveSpawnAmount);
@@ -135,7 +165,18 @@ namespace Controllers
           var itemToSpawn = canSpawnItems[Random.Range(0, canSpawnItems.Count)];
           Spawn(itemToSpawn.Key);
 
-          groupDifficulty -= itemToSpawn.Value;
+          var score = ScoreController.Instance;
+          var costMod = 1f;
+
+          if (score.LettersWaseted > 0)
+          {
+            var coef = score.LettersUsed / score.LettersWaseted;
+            costMod = coef;
+          }
+
+          costMod = Mathf.Clamp(costMod, 0.75f, 1f);
+
+          groupDifficulty -= itemToSpawn.Value * costMod;
         }
         else
           break;
@@ -165,11 +206,11 @@ namespace Controllers
 
       foreach (var enemy in Enemy.Enemies.ToList())
       {
-        if (enemy.ColorKind != kind && enemy.SpawnKind != SpawnKind.Big)
+        if (enemy.ColorKind != kind && enemy.SpawnKind != SpawnKind.Big && enemy.SpawnKind != SpawnKind.Boss)
           Destroy(enemy.gameObject);
         else
         {
-          if (enemy.SpawnKind != SpawnKind.Big)
+          if (enemy.SpawnKind != SpawnKind.Big && enemy.SpawnKind != SpawnKind.Boss)
           {
             var go = CreateEnemyGo(SpawnKind.Big);
             var bigEnemy = go.GetComponent<Enemy>();
@@ -213,6 +254,9 @@ namespace Controllers
           break;
         case SpawnKind.Big:
           go = GameObject.Instantiate(BigEnemyPrefab);
+          break;
+        case SpawnKind.Boss:
+          go = GameObject.Instantiate(BossPrefab);
           break;
       }
 
