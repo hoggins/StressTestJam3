@@ -64,6 +64,7 @@ ModelImporter:
     400056: Zub_3
     400058: Zubu
     2100000: lambert1
+    2100002: GreenRabbit
     2300000: Glaz_L
     2300002: Glaz_R
     2300004: Golova 1
@@ -274,7 +275,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.07
+    previousCalculatedGlobalScale: 0.04
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

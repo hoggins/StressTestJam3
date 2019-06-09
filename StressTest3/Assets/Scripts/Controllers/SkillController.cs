@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Controllers
 {
+  
   public class SkillController {/*: MonoBehaviour
   {
     public SkillController Instance { get; private set; }
@@ -36,8 +37,7 @@ namespace Controllers
 
       var power = GameBalance.SkillPower[skillKindId.Value].GetAtOrLast(wordLen);
 
-      BattleLogController.Instance?.PushMessage($"Cast {skillKindId} level {wordLen} power {power:0.##}");
-
+//      BattleLogController.Instance?.PushMessage($"Cast {skillKindId} level {wordLen} power {power:0.##}");
       switch (skillKindId)
       {
         case SkillKindId.Aoe:

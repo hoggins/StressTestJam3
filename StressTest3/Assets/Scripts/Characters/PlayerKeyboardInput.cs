@@ -27,9 +27,19 @@ namespace Characters
         LetterKeyboard.Instance.SetOrbEffect(KeyboardEffectKindId.Blur);
       }
       else if (Input.GetKeyDown(KeyCode.W))
+      {
         GameController.Instance.UseOrb(EnemyColorKind.Green);
+        LetterKeyboard.Instance.SetOrbEffect(KeyboardEffectKindId.Shuffle);
+      }
       else if (Input.GetKeyDown(KeyCode.E))
+      {
         GameController.Instance.UseOrb(EnemyColorKind.Blue);
+        LetterKeyboard.Instance.SetOrbEffect(KeyboardEffectKindId.Flip);
+      }
+      
+      if (Input.GetKeyDown(KeyCode.Z))
+        LetterKeyboard.Instance.PushOrb(EnemyColorKind.Blue);
+        
     }
   }
 }

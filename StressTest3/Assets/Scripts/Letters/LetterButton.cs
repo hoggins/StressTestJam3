@@ -23,14 +23,20 @@ namespace Letters
     public Button Button;
     public Image Image;
 
-    public void SetLetter(Letter letter)
+    public void SetLetter(Letter letter, bool onlyText = false)
     {
-      Reset();
+      if (!onlyText)
+        Reset();
+      
       Letter = letter;
       if (Letter.Value.HasValue)
+      {
         Text.text = Letter.Value.Value.ToString();
+        SetLocked(false);
+      }
       else if (Letter.OrbColor.HasValue)
       {
+        Text.text = String.Empty;
         var color = Orb.GetColor(Letter.OrbColor.Value);
         SetColor(color);
       }
@@ -46,7 +52,7 @@ namespace Letters
     private void Reset()
     {
       Text.text = String.Empty;
-      SetColor(Color.red);
+      //SetColor(Color.red);
       SetLocked(false);
       
       var cur = gameObject.GetComponents<LetterButtonEffect>();
@@ -78,11 +84,18 @@ namespace Letters
       if (!gameObject.activeSelf)
         return;
       var cur = gameObject.GetComponents<LetterButtonEffect>();
+
+      var time = (1 + cur.Length) * 5;
+      foreach (var cFx in cur)
+      {
+        cFx.ResetDuration(time);
+      }
+      
       if (cur.Any(e=>e.Effect == effect))
         return;
       
       var fx = gameObject.AddComponent<LetterButtonEffect>();
-      fx.Setup(effect, 5);
+      fx.Setup(effect, time);
     }
   }
 }
