@@ -174,6 +174,7 @@ namespace Characters
       {
         AudioController.Instance.PlayHeroHit();
         _lastHitSoundPlayTime = Time.time;
+        Animator.SetTrigger("Hit");
       }
     }
   }
