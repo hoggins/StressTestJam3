@@ -2527,7 +2527,7 @@ MonoBehaviour:
     Damage: 50
     AttackCooldown: 4
     Kind: 2
-  BossSpawnWave: 1
+  BossSpawnWave: 9
   CurrentWave: 0
   OrdDuration: 11
   ActiveOrb: 0
