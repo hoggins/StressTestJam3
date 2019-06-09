@@ -127,6 +127,7 @@ namespace Letters
       _button.Text.fontSize = 80;
       _button.Text.transform.localScale = Vector3.one;
       _button.Text.color = new Color(1, 1, 0, 1);
+      _button.Text.transform.rotation = new Quaternion(0,0,0,0);
     }
 
     public void ResetDuration(int duration)
