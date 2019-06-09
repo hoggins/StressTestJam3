@@ -41,7 +41,9 @@ namespace Characters
 
     public GameObject OrbPrefab;
     public float OrbDamageMultiplier = 2;
-    
+
+    public Animator Animator;
+
 
 
     private float _freezeDuration;
@@ -62,6 +64,8 @@ namespace Characters
       {
         var distance = Vector3.Distance(transform.position, Player.Instance.transform.position);
         var direction = -(transform.position - Player.Instance.transform.position).normalized;
+
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
         if (distance > StopDistance)
           transform.position += Preset.Speed * Time.deltaTime * direction;
@@ -102,6 +106,7 @@ namespace Characters
         return;
 
       _lastAttackTimer = Preset.AttackCooldown;
+      Animator.SetTrigger("Attack");
       Player.Instance.TakeDamage(Preset.Damage);
     }
 
@@ -111,8 +116,10 @@ namespace Characters
         damage *= OrbDamageMultiplier;
 
       BattleLogController.Instance?.PushMessage($"Hit {name} for {damage} damage");
-      
+
       Hp -= damage;
+
+      Animator.SetTrigger("Hit");
 
       if (Hp <= 0)
       {

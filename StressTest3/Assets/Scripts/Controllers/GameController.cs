@@ -47,7 +47,7 @@ namespace Controllers
 
     public Dictionary<SpawnKind, float> SpawnCosts = new Dictionary<SpawnKind, float>()
     {
-      {SpawnKind.Small, 1.0f},
+      {SpawnKind.Small, 0.75f},
       {SpawnKind.Big, 4.0f},
     };
 
@@ -62,7 +62,7 @@ namespace Controllers
     }
 
     private void Start()
-    {  
+    {
       if(!AudioController.Instance.Music.isPlaying)
         AudioController.Instance.PlayMusic();
     }
@@ -158,8 +158,8 @@ namespace Controllers
           AudioController.Instance.PlayOrbBlue();
           break;
       }
-      
-      
+
+
       ActiveOrb = kind;
       _orbDurationLeft = OrdDuration;
 

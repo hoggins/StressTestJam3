@@ -2734,24 +2734,24 @@ MonoBehaviour:
   SpawnDistanceMin: 30
   SpawnDistanceMax: 40
   SpawnXDiff: 12
-  SpawnDifficulty: 1.8
+  SpawnDifficulty: 1.3
   MaxSpawnPerWave: 15
   CurrentWaveDifficultyLeft: 0
   TimeBetweenSpawnsMin: 2
   TimeBetweenSpawnsMax: 5
   TimeToWalkMin: 1
   TimeToWalkMax: 3
-  DifficultyRising: 0.65
-  MaxSpawnRising: 0.15
+  DifficultyRising: 0.85
+  MaxSpawnRising: 0.25
   Presets:
   - Hp: 6
     Speed: 2
-    Damage: 5
+    Damage: 2
     AttackCooldown: 1
     Kind: 0
   - Hp: 18
     Speed: 0.5
-    Damage: 30
+    Damage: 10
     AttackCooldown: 2
     Kind: 1
   OrdDuration: 11
