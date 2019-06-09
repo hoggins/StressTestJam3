@@ -13,6 +13,7 @@ namespace UI
   {
     public Image PlayerHp;
     public GameObject GameLost;
+    public Text GameLostMetersLeft;
     public CanvasGroup GameLostCanvasGroup;
 
     public CanvasGroup BossGroup;
@@ -113,6 +114,7 @@ namespace UI
 
       AudioController.Instance.PlayDeathHero();
       GameLost.gameObject.SetActive(true);
+      GameLostMetersLeft.text = (7000 - ScoreController.Instance.WalkDist).ToString("#");
     }
   }
 }

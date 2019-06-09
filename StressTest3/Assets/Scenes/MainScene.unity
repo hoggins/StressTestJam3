@@ -2756,6 +2756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHp: {fileID: 430419885}
   GameLost: {fileID: 2043305930}
+  GameLostMetersLeft: {fileID: 1977745906}
   GameLostCanvasGroup: {fileID: 2043305932}
   BossGroup: {fileID: 851654700}
   BossText: {fileID: 423631767}
@@ -2898,6 +2899,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88493ce7f1fd40f6a9df94c04bac01d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1977745906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6763726703245443893, guid: 134edc168131a564c8125ca0defcb80c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4245992920718191568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1984443143
