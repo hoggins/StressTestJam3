@@ -24,18 +24,22 @@ namespace Letters
       else if (Letter.OrbColor.HasValue)
       {
         var color = Orb.GetColor(Letter.OrbColor.Value);
-        var buttonColors = Button.colors;
-        buttonColors.normalColor = color;
-        Button.colors = buttonColors;
+        SetColor(color);
       }
+    }
+
+    private void SetColor(Color color)
+    {
+      var buttonColors = Button.colors;
+      buttonColors.normalColor = color;
+      Button.colors = buttonColors;
     }
 
     private void Reset()
     {
       Text.text = String.Empty;
-      var buttonColors = Button.colors;
-      buttonColors.normalColor = Color.white;
-      Button.colors = buttonColors;
+      SetColor(Color.red);
+      SetLocked(false);
     }
 
     public void LetterClick()
@@ -46,8 +50,13 @@ namespace Letters
     public void SetUsed(bool isUsed)
     {
       IsUsed = isUsed;
-//      gameObject.SetActive(!isUsed);
-      Button.interactable = !isUsed;
+      gameObject.SetActive(!isUsed);
+    }
+
+    public void SetLocked(bool locked)
+    {
+      var color = locked ? Color.gray : Color.red;
+      SetColor(color);
     }
   }
 }

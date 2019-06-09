@@ -9,6 +9,7 @@ namespace Controllers
   {
     public Text Text;
     public Button Button;
+    public Image ReadyIcon;
 
     private float? _activatedAt;
 
@@ -16,6 +17,7 @@ namespace Controllers
     {
       _activatedAt = Time.time;
       Button.interactable = false;
+      ReadyIcon.gameObject.SetActive(false);
       TryUpdateTimer();
     }
 
@@ -37,8 +39,9 @@ namespace Controllers
     private void Unlock()
     {
       _activatedAt = null;
-      Text.text = "melee";
+      Text.text = string.Empty;
       Button.interactable = true;
+      ReadyIcon.gameObject.SetActive(true);
     }
 
     private void Update()
