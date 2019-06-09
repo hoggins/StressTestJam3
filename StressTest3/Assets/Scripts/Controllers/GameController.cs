@@ -18,6 +18,8 @@ namespace Controllers
     public GameObject BigEnemyPrefab;
     public GameObject BossPrefab;
     public GameObject OrbRedUsePrefab;
+    public GameObject OrbGreenUsePrefab;
+    public GameObject OrbBlueUsePrefab;
 
     public float SpawnDistanceMin = 30;
     public float SpawnDistanceMax = 40;
@@ -198,11 +200,11 @@ namespace Controllers
           break;
         case EnemyColorKind.Green:
           AudioController.Instance.PlayOrbGreen();
-          usePrefab = OrbRedUsePrefab;
+          usePrefab = OrbGreenUsePrefab;
           break;
         case EnemyColorKind.Blue:
           AudioController.Instance.PlayOrbBlue();
-          usePrefab = OrbRedUsePrefab;
+          usePrefab = OrbBlueUsePrefab;
           break;
       }
 

@@ -2344,7 +2344,11 @@ MonoBehaviour:
     type: 3}
   BossPrefab: {fileID: 6918320824718164093, guid: f1f4f2e79daf74816903e2c740e6cb11,
     type: 3}
-  OrbRedUsePrefab: {fileID: 441709098099303975, guid: 6b1167a7c7513524b8dc573c659855d3,
+  OrbRedUsePrefab: {fileID: 441709098099303975, guid: fe15801b4353e4d73bc59ca5f67c93c0,
+    type: 3}
+  OrbGreenUsePrefab: {fileID: 441709098099303975, guid: 19e966933b6e74d3c95707e20920ccec,
+    type: 3}
+  OrbBlueUsePrefab: {fileID: 441709098099303975, guid: 6b1167a7c7513524b8dc573c659855d3,
     type: 3}
   SpawnDistanceMin: 35
   SpawnDistanceMax: 42
