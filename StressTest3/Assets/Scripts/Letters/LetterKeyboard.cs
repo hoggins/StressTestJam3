@@ -165,13 +165,18 @@ namespace Letters
       
       SetButtonsLocked(false);
 
-      var hasLetters = TakeLetters(_buttons);
-      var words = LetterCore.GetWords(hasLetters);
-      BattleLogController.Instance?.PushMessage($"total {words.Count} words: {string.Join(", ", words.Take(30))}");
 
-      var byLenth = words.GroupBy(w => w.Length).OrderBy(g=>g.Key);
-      var stats = string.Join(", ", byLenth.Select(g => $"{g.Key}:{g.Count()}"));
-      Debug.Log(stats);
+
+      if (BattleLogController.Instance?.IsActive == true)
+      {
+        var hasLetters = TakeLetters(_buttons);
+        var words = LetterCore.GetWords(hasLetters);
+      
+        var topWords = words.GroupBy(w => w.Length).OrderBy(g=>g.Key).Select(g=>g.First());
+        BattleLogController.Instance?.PushMessage($"total {words.Count} examples: {string.Join(", ", topWords)}");
+      }
+
+      
     }
 
     private static List<char> TakeLetters(List<LetterButton> letterButtons)

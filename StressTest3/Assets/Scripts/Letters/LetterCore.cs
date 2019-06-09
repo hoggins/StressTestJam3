@@ -28,7 +28,7 @@ namespace Letters
     public static List<string> LoadDb()
     {
       var dat = (TextAsset) Resources.Load("db/zdb-win");
-      return dat.text.Split('\n').Select(w => w.Trim().ToUpper()).ToList();
+      return dat.text.Split('\n').Select(w => w.Trim().ToUpper()).Where(w=>w.Length>2).ToList();
     }
 
     public static List<char> PickLetters(int targetLetters, List<char> excludes)
