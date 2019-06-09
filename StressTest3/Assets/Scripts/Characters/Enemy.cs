@@ -40,6 +40,10 @@ namespace Characters
     public Texture GreenTexture;
     public Texture BlueTexture;
 
+    public GameObject RedEffect;
+    public GameObject GreenEffect;
+    public GameObject BlueEffect;
+
     public GameObject OrbPrefab;
     public float OrbDamageMultiplier = 2;
 
@@ -48,6 +52,11 @@ namespace Characters
 
 
     private float _freezeDuration;
+
+    private void Start()
+    {
+      var renderers = GetComponentsInChildren<Renderer>();
+    }
 
     private void OnEnable()
     {
@@ -199,15 +208,28 @@ namespace Characters
       SpawnKind = kind;
       Hp = Preset.Hp;
 
+      if (RedEffect != null)
+      {
+        RedEffect.SetActive(false);
+        GreenEffect.SetActive(false);
+        BlueEffect.SetActive(false);
+      }
+
       switch (colorKind)
       {
         case EnemyColorKind.Red:
+          if(RedEffect)
+          RedEffect.SetActive(true);
           SetColor(RedTexture);
           break;
         case EnemyColorKind.Green:
+          if(RedEffect)
+          GreenEffect.SetActive(true);
           SetColor(GreenTexture);
           break;
         case EnemyColorKind.Blue:
+          if(RedEffect)
+          BlueEffect.SetActive(true);
           SetColor(BlueTexture);
           break;
       }
@@ -215,13 +237,18 @@ namespace Characters
 
     private void SetColor(Texture texture)
     {
-      foreach (var r in Renderers)
+      var renderers = GetComponentsInChildren<Renderer>();
+
+      var material = renderers.FirstOrDefault(r => !r.gameObject.name.Contains("RabbitLaser")).material;
+      material = new Material(material);
+      material.mainTexture = texture;
+
+      foreach (var r in renderers)
       {
-        foreach (var material in r.materials)
-        {
-          material.mainTexture = texture;
-//          material.SetTexture("_Main", texture);
-        }
+        if (r.gameObject.name.Contains("RabbitLaser"))
+          continue;
+
+        r.sharedMaterial = material;
       }
     }
 

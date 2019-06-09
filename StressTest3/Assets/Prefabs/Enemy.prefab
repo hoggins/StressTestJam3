@@ -370,10 +370,19 @@ MonoBehaviour:
   RedTexture: {fileID: 2800000, guid: 7359797486445fb45afa19c2fc35263a, type: 3}
   GreenTexture: {fileID: 2800000, guid: 6d5ba09fe25f745498cfd98a63a8515a, type: 3}
   BlueTexture: {fileID: 2800000, guid: 493c6b6174dc93a47b6fd4de5f224017, type: 3}
+  RedEffect: {fileID: 8645631889370771033}
+  GreenEffect: {fileID: 2746143560966751946}
+  BlueEffect: {fileID: 5300379994289982237}
   OrbPrefab: {fileID: 6988712625868721258, guid: f5b379210199f41f082bddef187a20e9,
     type: 3}
   OrbDamageMultiplier: 2
   Animator: {fileID: 1309173789506743277}
+  _bossPhases: []
+  _currentPhase:
+    LettersCount: 0
+    HitsCount: 0
+  _currentBossPhase: 0
+  BossDamageTakenTimes: 0
 --- !u!1 &8410104197377566179
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,3 +572,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d602a437cd1dd16498619eb4fa8a3ce6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7475adbaff0c9534b82379d119372ccb, type: 3}
+--- !u!1 &8645631889370771033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 7475adbaff0c9534b82379d119372ccb,
+    type: 3}
+  m_PrefabInstance: {fileID: 8645631889370671353}
+  m_PrefabAsset: {fileID: 0}
