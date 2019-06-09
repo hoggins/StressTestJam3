@@ -41,7 +41,7 @@ namespace Letters
 
     private void Start()
     {
-      RechargeButtons(true);
+      RechargeButtons(RechargeMode.All);
     }
 
     public void PushOrb(EnemyColorKind kind)
@@ -56,7 +56,7 @@ namespace Letters
     {
       OnSubmit?.Invoke(_letters.GetValue());
       _letters.Reset();
-      RechargeButtons();
+      RechargeButtons(RechargeMode.Used);
     }
 
     public void Melee()
@@ -71,7 +71,7 @@ namespace Letters
       if (letter.OrbColor.HasValue)
       {
         OnLetter?.Invoke(letter);
-        RechargeButtons();
+        RechargeButtons(RechargeMode.Orb);
         return;
       }
       else if (_letters.IsComplete)
@@ -81,9 +81,30 @@ namespace Letters
       OnLetter?.Invoke(letter);
     }
 
-    private void RechargeButtons(bool isForce = false)
+    enum RechargeMode
     {
-      var targetButtons = isForce ? _buttons : _buttons.Where(b => b.IsUsed).ToList();
+      All,
+      Used,
+      Orb,
+    }
+
+    private void RechargeButtons(RechargeMode mode)
+    {
+      List<LetterButton> targetButtons;
+      switch (mode)
+      {
+        case RechargeMode.All:
+          targetButtons = _buttons;
+          break;
+        case RechargeMode.Used:
+          targetButtons = _buttons.Where(b => b.IsUsed).ToList();
+          break;
+        case RechargeMode.Orb:
+          targetButtons = _buttons.Where(b => b.IsUsed && b.Letter.OrbColor != null).ToList();
+          break;
+        default:
+          throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+      }
       var excludeLetters = TakeLetters(targetButtons).GroupBy(l => l).Where(g => g.Count() > 1).Select(g => g.Key).ToList();
       var letters = LetterCore.PickLetters(targetButtons.Count, excludeLetters);
 

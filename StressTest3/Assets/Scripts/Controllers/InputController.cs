@@ -9,7 +9,7 @@ namespace Controllers
 {
   public class InputController : MonoBehaviour
   {
-    private void Awake()
+    private void Start()
     {
       LetterKeyboard.Instance.OnSubmit += OnSubmit;
       LetterKeyboard.Instance.OnLetter += OnLetter;
