@@ -50,7 +50,7 @@ namespace UI
       var enemy = Enemy.Enemies.Find(e => e.SpawnKind == GameController.SpawnKind.Boss);
       if (enemy != null)
       {
-        BossHp.fillAmount = (float)enemy.BossDamageTakenTimes/ enemy._currentPhase.HitsCount ;
+        BossHp.fillAmount = 1f - (float)enemy.BossDamageTakenTimes/ enemy._currentPhase.HitsCount ;
         BossHp.gameObject.SetActive(true);
       }
       else

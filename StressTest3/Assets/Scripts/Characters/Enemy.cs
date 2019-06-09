@@ -144,6 +144,9 @@ namespace Characters
 
     public void TryTakeBossDamage(int lettersCount)
     {
+      if (lettersCount == 0)
+        _speedMod = 50;
+
       if (lettersCount >= _currentPhase.LettersCount)
       {
 
