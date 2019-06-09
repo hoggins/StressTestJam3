@@ -316,17 +316,8 @@ MonoBehaviour:
   DeathHero: {fileID: 8300000, guid: 61cc0d2dca29847d79f5e40efa55ae20, type: 3}
   HeroHit: {fileID: 8300000, guid: 4cd09054c933549278447f4285e074c7, type: 3}
   RandomPhrases:
-  - {fileID: 8300000, guid: 7f46f549865194434b61863ef097f42e, type: 3}
-  - {fileID: 8300000, guid: 50471910ac10d4a7da8f960c52f0cd2f, type: 3}
-  - {fileID: 8300000, guid: 6c6c589ba63cb447b9a58539b6c76bd0, type: 3}
-  - {fileID: 8300000, guid: f9f2e06f0bbde43dabf20238557023df, type: 3}
-  - {fileID: 8300000, guid: f95e6c9a861dc4de6a26050e7f71b531, type: 3}
-  - {fileID: 8300000, guid: 44e8dd66d1d94457fb261f0375fbf7af, type: 3}
-  - {fileID: 8300000, guid: 95ac5e3a6856243f3875dfda4db4d876, type: 3}
-  - {fileID: 8300000, guid: 6f6e22333871d403caa357f943d465cf, type: 3}
-  - {fileID: 8300000, guid: 9fa7db14d2e0349a4a18f1fb2015db3d, type: 3}
-  - {fileID: 8300000, guid: 974275304cc224e60af2d44b5d8775ad, type: 3}
-  - {fileID: 8300000, guid: 3eea3da96a16145c08aa5a1c7d2b926d, type: 3}
+  - {fileID: 8300000, guid: 6bcd1db760a4c48d583413298d150286, type: 3}
+  - {fileID: 8300000, guid: 68b22d0a9e5684f0da26140c1ff9cd39, type: 3}
   Common: {fileID: 3934392677696726594}
   Music: {fileID: 3934392677759856163}
   MusicMenu: {fileID: 3934392678994284601}

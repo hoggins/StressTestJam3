@@ -33,6 +33,7 @@ namespace Characters
       while (true)
       {
         yield return new WaitForSeconds(Random.Range(15, 30));
+//        yield return new WaitForSeconds(Random.Range(4, 5));
         AudioController.Instance.PlayPhrase();
       }
     }
