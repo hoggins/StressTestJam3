@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Model;
+using UI;
 using UnityEngine;
 
 namespace Controllers
@@ -25,6 +26,11 @@ namespace Controllers
     private void LineOnOnSelect(int word, SkillKindId skillId)
     {
       GameBalance.SetSkill(word, skillId);
+    }
+
+    public void OnOk()
+    {
+      StartMenu.Instance.ToggleSkillUi();
     }
   }
 }

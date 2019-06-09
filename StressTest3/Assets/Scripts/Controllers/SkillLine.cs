@@ -24,12 +24,32 @@ namespace Controllers
     private void Awake()
     {
       Buttons = GetComponentsInChildren<Button>().ToList();
-      
-      Buttons[0].onClick.AddListener(()=> DoSelect(SkillKindId.Aoe));
-      Buttons[1].onClick.AddListener(()=> DoSelect(SkillKindId.Freeze));
-      Buttons[2].onClick.AddListener(()=> DoSelect(SkillKindId.Heal));
+      foreach (var btn in Buttons)
+      {
+        var buttonColors = btn.colors;
+        buttonColors.disabledColor = buttonColors.normalColor;
+        buttonColors.pressedColor = buttonColors.normalColor;
+        btn.colors = buttonColors;
+      }
+
+    }
+
+    private void Start()
+    {
+      SetupButton(Buttons[0], SkillKindId.Aoe);
+      SetupButton(Buttons[1], SkillKindId.Freeze);
+      SetupButton(Buttons[2], SkillKindId.Heal);
 
       UpdateSelected();
+
+      
+    }
+
+    private void SetupButton(Button button, SkillKindId skill)
+    {
+      button.onClick.AddListener(() => DoSelect(skill));
+      var text = button.GetComponentInChildren<Text>();
+      text.text = GameBalance.SkillPower[skill][_wordIdx].ToString("0.##");
     }
 
     private void DoSelect(SkillKindId skillId)
@@ -45,8 +65,13 @@ namespace Controllers
       for (var index = 0; index < Buttons.Count; index++)
       {
         var btn = Buttons[index];
-        var color = index == btnIdx ? Color.red : Color.white;
-        SetColor(btn, color);
+        var buttonColors = btn.colors;
+        
+        var color = index == btnIdx ? Color.white : buttonColors.disabledColor;
+        
+        
+        buttonColors.normalColor = color;
+        btn.colors = buttonColors;
       }
     }
     

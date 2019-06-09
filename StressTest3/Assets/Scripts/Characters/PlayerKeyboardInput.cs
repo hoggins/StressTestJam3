@@ -39,6 +39,10 @@ namespace Characters
       
       if (Input.GetKeyDown(KeyCode.Z))
         LetterKeyboard.Instance.PushOrb(EnemyColorKind.Blue);
+      if (Input.GetKeyDown(KeyCode.X))
+        LetterKeyboard.Instance.PushOrb(EnemyColorKind.Red);
+      if (Input.GetKeyDown(KeyCode.C))
+        LetterKeyboard.Instance.PushOrb(EnemyColorKind.Green);
         
     }
   }

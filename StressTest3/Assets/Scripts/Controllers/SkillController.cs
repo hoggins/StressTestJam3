@@ -8,7 +8,7 @@ namespace Controllers
 {
   public class SkillController {/*: MonoBehaviour
   {
-    public SkillController Instance { get; private set; }
+    public static SkillController Instance { get; private set; }
 
     private void Awake()
     {

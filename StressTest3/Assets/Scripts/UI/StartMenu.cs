@@ -16,6 +16,18 @@ namespace UI
     public GameObject MenuRoot;
     public GameObject SkillUiRoot;
     
+    public static StartMenu Instance { get; private set; }
+
+    private void Awake()
+    {
+      Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+      Instance = null;
+    }
+    
     private void OnEnable()
     {
       GameBalance.Init();
@@ -26,7 +38,7 @@ namespace UI
       ExitButton?.onClick?.AddListener(() => Application.Quit());
     }
 
-    private void ToggleSkillUi()
+    public void ToggleSkillUi()
     {
       MenuRoot.SetActive(!MenuRoot.activeSelf);
       SkillUiRoot.SetActive(!SkillUiRoot.activeSelf);
