@@ -76,6 +76,7 @@ ModelImporter:
     400068: pPlane1
     400070: pSphere1
     2100000: lambert1
+    2100002: GreenRabbit
     2300000: Hand_L
     2300002: Hand_R
     2300004: Koleca_L_0
@@ -297,7 +298,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
+    previousCalculatedGlobalScale: 0.04
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
