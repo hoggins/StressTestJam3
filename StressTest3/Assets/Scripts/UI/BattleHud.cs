@@ -22,6 +22,8 @@ namespace UI
     public Button RetryButton;
     public Button LeaveButton;
 
+    public Image BossHp;
+
 
     private bool _lost = false;
     private bool _boss = false;
@@ -44,6 +46,17 @@ namespace UI
     {
       PlayerHp.fillAmount = Player.Instance.Hp/ Player.Instance.MaxHp;
 
+
+      var enemy = Enemy.Enemies.Find(e => e.SpawnKind == GameController.SpawnKind.Boss);
+      if (enemy != null)
+      {
+        BossHp.fillAmount = (float)enemy.BossDamageTakenTimes/ enemy._currentPhase.HitsCount ;
+        BossHp.gameObject.SetActive(true);
+      }
+      else
+      {
+        BossHp.gameObject.SetActive(false);
+      }
 
       if(Player.Instance.Hp <= 0f)
         Lose();
