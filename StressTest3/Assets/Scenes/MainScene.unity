@@ -2733,7 +2733,7 @@ MonoBehaviour:
     type: 3}
   SpawnDistanceMin: 30
   SpawnDistanceMax: 40
-  SpawnXDiff: 20
+  SpawnXDiff: 12
   SpawnDifficulty: 1.8
   MaxSpawnPerWave: 15
   CurrentWaveDifficultyLeft: 0
@@ -2801,7 +2801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChunkPrefabs:
   - {fileID: 3251715813052523021, guid: 24abec5b6be324e9caa0d55b954b47da, type: 3}
-  ChunkLength: 10
+  ChunkLength: 50
 --- !u!4 &1455071146
 Transform:
   m_ObjectHideFlags: 0
