@@ -173,9 +173,9 @@ MonoBehaviour:
   StopDistance: 3
   Renderers:
   - {fileID: 3346604488496936570}
-  RedTexture: {fileID: 2800000, guid: 97a838c11f8ec4b69840403ac93472d1, type: 3}
-  GreenTexture: {fileID: 2800000, guid: f1707cbfe01b64a0095c39828cdfff4f, type: 3}
-  BlueTexture: {fileID: 2800000, guid: 79edf1b53972f4e378fb1ed9d0d5d315, type: 3}
+  RedTexture: {fileID: 2800000, guid: 7359797486445fb45afa19c2fc35263a, type: 3}
+  GreenTexture: {fileID: 2800000, guid: 6d5ba09fe25f745498cfd98a63a8515a, type: 3}
+  BlueTexture: {fileID: 2800000, guid: 493c6b6174dc93a47b6fd4de5f224017, type: 3}
   OrbPrefab: {fileID: 6988712625868721258, guid: f5b379210199f41f082bddef187a20e9,
     type: 3}
   OrbDamageMultiplier: 2
