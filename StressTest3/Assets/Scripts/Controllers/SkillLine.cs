@@ -54,6 +54,8 @@ namespace Controllers
 
     private void DoSelect(SkillKindId skillId)
     {
+      if (_selected == skillId)
+        return;
       OnSelect?.Invoke(_wordIdx, skillId);
       _selected = skillId;
       UpdateSelected();

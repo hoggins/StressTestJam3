@@ -31,10 +31,10 @@ namespace Model
       null,
       null,
       null,
-      SkillKindId.Freeze,
+      SkillKindId.Aoe,
       SkillKindId.Aoe,
       SkillKindId.Heal,
-      SkillKindId.Aoe,
+      SkillKindId.Freeze,
       SkillKindId.Aoe,
       SkillKindId.Aoe,
     };
