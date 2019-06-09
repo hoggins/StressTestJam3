@@ -50,7 +50,7 @@ namespace Characters
       if (!GameController.Instance.IsWaveInProgress)
         _speed = Mathf.Lerp(_speed, Speed, Time.deltaTime*3);
       else
-        _speed = Mathf.Lerp(_speed, Speed /4f, Time.deltaTime);
+        _speed = Mathf.Lerp(_speed, Speed /10f, Time.deltaTime);
 
 
       var passedDist = Time.deltaTime*_speed;
