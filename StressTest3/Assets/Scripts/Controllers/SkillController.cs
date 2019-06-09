@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using Model;
-using UnityEngine;
 
 namespace Controllers
 {
-  
   public class SkillController {/*: MonoBehaviour
   {
     public SkillController Instance { get; private set; }
