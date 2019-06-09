@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lines: []
+  Marks: []
 --- !u!1 &1240316663011968667
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,6 +590,7 @@ GameObject:
   - component: {fileID: 1919849753217339209}
   - component: {fileID: 327227365425864229}
   - component: {fileID: 2525628042453207101}
+  - component: {fileID: 5337150177626442290}
   m_Layer: 5
   m_Name: Aoe (1)
   m_TagString: Untagged
@@ -695,6 +697,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &5337150177626442290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135939491589665097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659046533dd40c08055daa95a155f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4545987583936878039
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +979,7 @@ GameObject:
   - component: {fileID: 1633323147602747759}
   - component: {fileID: 1806298018849902382}
   - component: {fileID: 2285147254441554002}
+  - component: {fileID: 3037167413041319819}
   m_Layer: 5
   m_Name: Aoe (2)
   m_TagString: Untagged
@@ -1071,6 +1086,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3037167413041319819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447501492937768440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659046533dd40c08055daa95a155f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6642025572870288327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1174,7 @@ GameObject:
   - component: {fileID: 2030921914577391330}
   - component: {fileID: 4121097981237350736}
   - component: {fileID: 7941995035227924317}
+  - component: {fileID: 4194621236751210524}
   m_Layer: 5
   m_Name: Aoe
   m_TagString: Untagged
@@ -1253,6 +1281,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4194621236751210524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6925437569090483148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659046533dd40c08055daa95a155f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7062370192932547214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1580,7 @@ GameObject:
   - component: {fileID: 8727530239525283137}
   - component: {fileID: 7159365523042274131}
   - component: {fileID: 7556248394665756630}
+  - component: {fileID: 7604187606872510606}
   m_Layer: 5
   m_Name: Aoe (3)
   m_TagString: Untagged
@@ -1646,6 +1687,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7604187606872510606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735833796992196809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a659046533dd40c08055daa95a155f8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7791793865403386488
 GameObject:
   m_ObjectHideFlags: 0
