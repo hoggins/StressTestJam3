@@ -18,6 +18,7 @@ namespace Controllers
       _activatedAt = Time.time;
       Button.interactable = false;
       ReadyIcon.gameObject.SetActive(false);
+      Text.enabled = true;
       TryUpdateTimer();
     }
 
@@ -40,6 +41,7 @@ namespace Controllers
     {
       _activatedAt = null;
       Text.text = string.Empty;
+      Text.enabled = false;
       Button.interactable = true;
       ReadyIcon.gameObject.SetActive(true);
     }
