@@ -66,12 +66,22 @@ namespace UI
         GameLostCanvasGroup.alpha = Mathf.Lerp(GameLostCanvasGroup.alpha, 1f, Time.deltaTime);
         if (GameLostCanvasGroup.alpha > 0.8f)
         {
-          if (Input.GetMouseButtonDown(0))
+          /*if (Input.GetMouseButtonDown(0))
           {
             SceneManager.LoadScene("MainScene");
-          }
+          }*/
         }
       }
+    }
+
+    public void ToMenuButton()
+    {
+      SceneManager.LoadScene("StartMenu");
+    }
+
+    public void ToRestartButton()
+    {
+      SceneManager.LoadScene("MainScene");
     }
 
     public void Boss()
