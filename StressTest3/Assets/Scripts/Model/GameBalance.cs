@@ -13,8 +13,8 @@ namespace Model
   {
     public const int MeleeCooldown = 10;
     
-//    public const float OrbDropChance = 0.05f;
-    public const float OrbDropChance = 1f;
+    public const float OrbDropChance = 0.25f;
+//    public const float OrbDropChance = 1f;
     
     // index in List is word length
     public static Dictionary<SkillKindId, List<double>> SkillPower = new Dictionary<SkillKindId, List<double>>
