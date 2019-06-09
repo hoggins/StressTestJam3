@@ -61,7 +61,7 @@ namespace Controllers
       ActiveOrb = EnemyColorKind.None;
     }
 
-    private void OnEnable()
+    private void Start()
     {  
       if(!AudioController.Instance.Music.isPlaying)
         AudioController.Instance.PlayMusic();
