@@ -67,7 +67,7 @@ namespace Controllers
         var btn = Buttons[index];
         var buttonColors = btn.colors;
         
-        var color = index == btnIdx ? Color.white : buttonColors.disabledColor;
+        var color = index == btnIdx ? buttonColors.disabledColor : Color.white;
         
         
         buttonColors.normalColor = color;
