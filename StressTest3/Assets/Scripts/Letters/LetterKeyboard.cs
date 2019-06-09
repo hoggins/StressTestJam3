@@ -66,17 +66,20 @@ namespace Letters
 
     private void ButtonOnLetter(LetterButton sender, Letter letter)
     {
-      sender.SetUsed(true);
-      
       if (letter.OrbColor.HasValue)
       {
+        sender.SetUsed(true);
         OnLetter?.Invoke(letter);
         RechargeButtons(RechargeMode.Orb);
         return;
       }
-      else if (_letters.IsComplete)
+
+      if (_letters.IsComplete)
+      {
+        // todo no bullets clicking here
         return;
-      
+      }
+      sender.SetUsed(true);
       _letters.InputNext(letter);
       OnLetter?.Invoke(letter);
     }
