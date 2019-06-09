@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Model
 {
@@ -37,5 +38,30 @@ namespace Model
       SkillKindId.Aoe,
       SkillKindId.Aoe,
     };
+
+    public static void SetSkill(int wordLen, SkillKindId skillId)
+    {
+      SkillLayout[wordLen] = skillId;
+      PlayerPrefs.SetInt("word_"+wordLen, (int)skillId);
+      PlayerPrefs.Save();
+    }
+
+    public static void Init()
+    {
+      ReadSkillByWord(3);
+      ReadSkillByWord(4);
+      ReadSkillByWord(5);
+      ReadSkillByWord(6);
+      SkillLayout[7] = SkillLayout[6];
+      SkillLayout[8] = SkillLayout[6];
+    }
+
+    private static void ReadSkillByWord(int len)
+    {
+      var key = "word_" + len;
+      if (!PlayerPrefs.HasKey(key))
+        return;
+      SkillLayout[len] = (SkillKindId) PlayerPrefs.GetInt(key);
+    }
   }
 }
