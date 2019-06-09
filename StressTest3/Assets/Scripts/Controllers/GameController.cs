@@ -17,6 +17,7 @@ namespace Controllers
     public GameObject EnemyPrefab;
     public GameObject BigEnemyPrefab;
     public GameObject BossPrefab;
+    public GameObject OrbRedUsePrefab;
 
     public float SpawnDistanceMin = 30;
     public float SpawnDistanceMax = 40;
@@ -185,21 +186,28 @@ namespace Controllers
       return spawned;
     }
 
+
     public void UseOrb(EnemyColorKind kind)
     {
+      GameObject usePrefab = null;
       switch (kind)
       {
         case EnemyColorKind.Red:
           AudioController.Instance.PlayOrbRed();
+          usePrefab = OrbRedUsePrefab;
           break;
         case EnemyColorKind.Green:
           AudioController.Instance.PlayOrbGreen();
+          usePrefab = OrbRedUsePrefab;
           break;
         case EnemyColorKind.Blue:
           AudioController.Instance.PlayOrbBlue();
+          usePrefab = OrbRedUsePrefab;
           break;
       }
 
+
+      Instantiate(usePrefab, Player.Instance.transform.position + new Vector3(0,0, 15), Quaternion.identity);
 
       ActiveOrb = kind;
       _orbDurationLeft = OrdDuration;
