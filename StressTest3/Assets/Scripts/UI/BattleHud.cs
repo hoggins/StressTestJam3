@@ -23,6 +23,7 @@ namespace UI
     public Button LeaveButton;
 
     public Image BossHp;
+    public GameObject BossHpRoot;
 
 
     private bool _lost = false;
@@ -51,11 +52,11 @@ namespace UI
       if (enemy != null)
       {
         BossHp.fillAmount = 1f - (float)enemy.BossDamageTakenTimes/ enemy._currentPhase.HitsCount ;
-        BossHp.gameObject.SetActive(true);
+        BossHpRoot.gameObject.SetActive(true);
       }
       else
       {
-        BossHp.gameObject.SetActive(false);
+        BossHpRoot.gameObject.SetActive(false);
       }
 
       if(Player.Instance.Hp <= 0f)
