@@ -1,0 +1,236 @@
+fileFormatVersion: 2
+guid: b1155c0d8da841943af6e627a8cd9c1e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: golova
+    100004: gun
+    100006: gun 1
+    100008: L1
+    100010: L2
+    100012: noga_L
+    100014: noga_R
+    100016: pCube5
+    100018: pCube6
+    100020: pCube7
+    100022: R1
+    100024: R2
+    100026: ruka_L
+    100028: ruka_R
+    100030: wlyapa
+    100032: xvost
+    400000: //RootNode
+    400002: golova
+    400004: gun
+    400006: gun 1
+    400008: L1
+    400010: L2
+    400012: noga_L
+    400014: noga_R
+    400016: pCube5
+    400018: pCube6
+    400020: pCube7
+    400022: R1
+    400024: R2
+    400026: ruka_L
+    400028: ruka_R
+    400030: wlyapa
+    400032: xvost
+    2100000: LisTexture
+    2300000: //RootNode
+    2300002: golova
+    2300004: gun
+    2300006: gun 1
+    2300008: L1
+    2300010: L2
+    2300012: noga_L
+    2300014: noga_R
+    2300016: pCube5
+    2300018: pCube6
+    2300020: pCube7
+    2300022: R1
+    2300024: R2
+    2300026: ruka_L
+    2300028: ruka_R
+    2300030: wlyapa
+    2300032: xvost
+    3300000: //RootNode
+    3300002: golova
+    3300004: gun
+    3300006: gun 1
+    3300008: L1
+    3300010: L2
+    3300012: noga_L
+    3300014: noga_R
+    3300016: pCube5
+    3300018: pCube6
+    3300020: pCube7
+    3300022: R1
+    3300024: R2
+    3300026: ruka_L
+    3300028: ruka_R
+    3300030: wlyapa
+    3300032: xvost
+    4300000: Fox
+    4300002: golova
+    4300004: wlyapa
+    4300006: xvost
+    4300008: pCube5
+    4300010: pCube6
+    4300012: pCube7
+    4300014: ruka_L
+    4300016: L1
+    4300018: L2
+    4300020: gun
+    4300022: ruka_R
+    4300024: R1
+    4300026: R2
+    4300028: gun
+    4300030: noga_R
+    4300032: noga_L
+    7400000: Attack_0
+    7400002: Attack_1
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Attack_0
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack_1
+      takeName: Take 001
+      firstFrame: 13
+      lastFrame: 26
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.099999994
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
