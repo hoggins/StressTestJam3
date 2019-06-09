@@ -153,7 +153,7 @@ namespace Characters
         _speedMod = -60f;
 
         BossDamageTakenTimes++;
-        if (BossDamageTakenTimes > _currentPhase.HitsCount)
+        if (BossDamageTakenTimes >= _currentPhase.HitsCount)
         {
           _currentBossPhase++;
           if (_currentBossPhase >= _bossPhases.Count)
