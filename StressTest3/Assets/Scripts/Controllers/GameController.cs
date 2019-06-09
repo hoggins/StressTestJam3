@@ -207,7 +207,7 @@ namespace Controllers
       }
 
 
-      Instantiate(usePrefab, Player.Instance.transform.position + new Vector3(0,0, 15), Quaternion.identity);
+      Instantiate(usePrefab, Player.Instance.transform.position + new Vector3(0, -2.39f, 20), Quaternion.identity);
 
       ActiveOrb = kind;
       _orbDurationLeft = OrdDuration;
