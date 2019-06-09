@@ -9,15 +9,22 @@ namespace Controllers
   public class SkillUiController : MonoBehaviour
   {
     public List<SkillLine> Lines;
+    public List<SkillValueMark> Marks;
     
     private void Awake()
     {
       Lines = GetComponentsInChildren<SkillLine>().ToList();
+      Marks = GetComponentsInChildren<SkillValueMark>().ToList();
 
       var nextWIdx = 3;
-      foreach (var line in Lines)
+      for (var index = 0; index < Lines.Count; index++)
       {
-        line.Setup(nextWIdx, GameBalance.SkillLayout[nextWIdx].Value);
+        var line = Lines[index];
+        var mark = Marks[index];
+        
+        var selected = GameBalance.SkillLayout[nextWIdx].Value;
+        mark.SetSkill(selected);
+        line.Setup(nextWIdx, selected);
         line.OnSelect += LineOnOnSelect;
         nextWIdx++;
       }
@@ -25,6 +32,7 @@ namespace Controllers
 
     private void LineOnOnSelect(int word, SkillKindId skillId)
     {
+      Marks[word-3].SetSkill(skillId);
       GameBalance.SetSkill(word, skillId);
     }
 
