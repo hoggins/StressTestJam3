@@ -177,7 +177,7 @@ namespace Controllers
             costMod = coef;
           }
 
-          costMod = Mathf.Clamp(costMod, 0.75f, 1f);
+          costMod = Mathf.Clamp(costMod, 0.5f, 1f);
 
           groupDifficulty -= itemToSpawn.Value * costMod;
         }
