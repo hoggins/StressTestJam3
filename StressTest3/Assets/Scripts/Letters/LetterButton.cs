@@ -55,7 +55,7 @@ namespace Letters
 
     public void SetLocked(bool locked)
     {
-      var color = locked ? Color.gray : Color.red;
+      var color = locked ? Color.gray : new Color(0.8f,0.87f,0,1);
       SetColor(color);
     }
   }

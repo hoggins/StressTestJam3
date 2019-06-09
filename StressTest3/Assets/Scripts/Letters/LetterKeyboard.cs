@@ -42,7 +42,6 @@ namespace Letters
     private void Start()
     {
       RechargeButtons(RechargeMode.All);
-      SetButtonsLocked(true);
     }
 
     public void PushOrb(EnemyColorKind kind)
