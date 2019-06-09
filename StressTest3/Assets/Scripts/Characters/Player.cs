@@ -13,6 +13,7 @@ namespace Characters
 
     public Transform[] FirePoints;
     public GameObject BulletPrefab;
+    public Animator Animator;
 
     private float _speed = 0f;
 
@@ -123,6 +124,13 @@ namespace Characters
       _currentFirePoint++;
       var firePoint = FirePoints[_currentFirePoint % FirePoints.Length];
 
+      if(_currentFirePoint%FirePoints.Length == 0)
+        Animator.SetTrigger("Attack_0");
+
+      if(_currentFirePoint%FirePoints.Length == 1)
+        Animator.SetTrigger("Attack_1");
+
+      go.transform.position = firePoint.position;
       go.transform.position = firePoint.position;
       go.transform.localScale = new Vector3(1, 1, 1);
 
@@ -158,7 +166,7 @@ namespace Characters
     {
       if(Hp <= 0f)
         return;
-      
+
       Hp -= damage;
       CameraController.Instance.Shaker.ShakeOnce(0.285f*damage, 2f, 0f, 0.85f, new Vector3(), new Vector3(1,1,1));
 

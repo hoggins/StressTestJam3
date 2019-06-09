@@ -170,7 +170,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 529a56ce1e00b4e4ab34d6a753aa0afe, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564fd1161aa742819d15d1018e51e6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shoot: {fileID: 8300000, guid: 81afbf037b71945f4aee9b88a77db616, type: 3}
+  Shoot: {fileID: 8300000, guid: 0485f3a8f3bb94e3d90604d99d3a536d, type: 3}
   Reload: {fileID: 8300000, guid: 558f8176f677e46798abbf9039aa1d86, type: 3}
   Freeze: {fileID: 8300000, guid: 1265c1da5bb1943528c2005250b3f290, type: 3}
   Heal: {fileID: 8300000, guid: b74f87fc9bdbd43b5b99b75d7f316cf9, type: 3}
@@ -361,7 +361,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e62e6b4bcf72343cebd0596e37f27129, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
